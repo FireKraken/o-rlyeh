@@ -40,29 +40,31 @@ public class PlayerMovement : MonoBehaviour {
 	
 	private void playerMove()
 	{
+
 		if (Input.GetKey (KeyCode.W)) 
 		{
-			rb.AddRelativeForce(Vector3.up * speed);
-			currentDirection = (int) direction.up;
+			rb.AddRelativeForce (Vector3.up * speed);
+			currentDirection = (int)direction.up;
 		}
-		
+
 		if (Input.GetKey (KeyCode.A)) 
 		{
 			rb.AddRelativeForce (Vector3.left * speed); 
-			currentDirection = (int) direction.left;
+			currentDirection = (int)direction.left;
 		}
-		
+
 		if (Input.GetKey (KeyCode.S)) 
 		{
 			rb.AddRelativeForce (Vector3.down * speed); 
-			currentDirection = (int) direction.down;
+			currentDirection = (int)direction.down;
 		}
-		
+
 		if (Input.GetKey (KeyCode.D)) 
 		{
 			rb.AddRelativeForce (Vector3.right * speed); 
-			currentDirection = (int) direction.right;
+			currentDirection = (int)direction.right;
 		}
+
 		if (!Input.anyKey)
 		{
 			currentDirection = (int) direction.idle;
@@ -79,6 +81,10 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		switch (dir) 
 		{
+		case (int) direction.idle:
+			anim.SetInteger("direction", (int) direction.idle);
+			break;
+
 		case (int) direction.up:
 			anim.SetInteger("direction", (int) direction.up);
 			break;

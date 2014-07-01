@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6e136f33ec0a0ea48aeec5ebd211b322
+guid: 8ffda218ae350f849b7356a919620f14
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -20,10 +20,10 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 1024
   textureSettings:
-    filterMode: 0
+    filterMode: -1
     aniso: 1
     mipBias: -1
     wrapMode: 1
@@ -42,53 +42,23 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: main_0
+    - name: female_left
       rect:
         serializedVersion: 2
-        x: 6
-        y: 823
-        width: 963
-        height: 1202
+        x: 0
+        y: 10
+        width: 1227
+        height: 542
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: main_1
+    - name: female_right
       rect:
         serializedVersion: 2
-        x: 1204
-        y: 770
-        width: 603
-        height: 1153
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: main_2
-      rect:
-        serializedVersion: 2
-        x: 2030
-        y: 734
-        width: 587
-        height: 1136
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: main_3
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 26
-        width: 1202
-        height: 489
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: main_4
-      rect:
-        serializedVersion: 2
-        x: 1518
-        y: 72
-        width: 1104
-        height: 433
+        x: 1260
+        y: 92
+        width: 1171
+        height: 446
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
