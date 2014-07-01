@@ -54,13 +54,13 @@ public class PlayerMovement : MonoBehaviour {
 		
 		else if (Input.GetKeyDown (KeyCode.S)) 
 		{
-			rb.AddForce (Vector3.left * speed); 
+			rb.AddForce (Vector3.down * speed); 
 			currentDirection = (int) direction.down;
 		}
 		
 		else if (Input.GetKeyDown (KeyCode.D)) 
 		{
-			rb.AddForce (Vector3.left * speed); 
+			rb.AddForce (Vector3.right * speed); 
 			currentDirection = (int) direction.right;
 		}
 		else 
