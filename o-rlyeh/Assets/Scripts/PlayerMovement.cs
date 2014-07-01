@@ -40,30 +40,30 @@ public class PlayerMovement : MonoBehaviour {
 	
 	private void playerMove()
 	{
-		if (Input.GetKeyDown (KeyCode.W)) 
+		if (Input.GetKey (KeyCode.W)) 
 		{
-			rb.AddForce(Vector3.up * speed);
+			rb.AddRelativeForce(Vector3.up * speed);
 			currentDirection = (int) direction.up;
 		}
 		
-		else if (Input.GetKeyDown (KeyCode.A)) 
+		if (Input.GetKey (KeyCode.A)) 
 		{
-			rb.AddForce (Vector3.left * speed); 
+			rb.AddRelativeForce (Vector3.left * speed); 
 			currentDirection = (int) direction.left;
 		}
 		
-		else if (Input.GetKeyDown (KeyCode.S)) 
+		if (Input.GetKey (KeyCode.S)) 
 		{
-			rb.AddForce (Vector3.down * speed); 
+			rb.AddRelativeForce (Vector3.down * speed); 
 			currentDirection = (int) direction.down;
 		}
 		
-		else if (Input.GetKeyDown (KeyCode.D)) 
+		if (Input.GetKey (KeyCode.D)) 
 		{
-			rb.AddForce (Vector3.right * speed); 
+			rb.AddRelativeForce (Vector3.right * speed); 
 			currentDirection = (int) direction.right;
 		}
-		else 
+		if (!Input.anyKey)
 		{
 			currentDirection = (int) direction.idle;
 		}

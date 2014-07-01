@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5000000}
-  speed: 20
+  speed: 10
   anim: {fileID: 9500000}
   currentDirection: 0
 --- !u!212 &21200000
