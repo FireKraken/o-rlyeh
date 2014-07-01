@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// movement stuff
 	public Rigidbody2D rb; 
-	//public float turnSpeed = 0.1f; // if want some rotation?
+	//public float turnSpeed = 0.1f;	// if want some rotation?
 	public float speed; 
 	
 	// sprite/animation switching depending on direction stuff
