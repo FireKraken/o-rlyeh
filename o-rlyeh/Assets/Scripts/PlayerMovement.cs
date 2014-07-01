@@ -1,35 +1,102 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-public class PlayerMovement : MonoBehaviour 
-{
-	public float speed = 0.8f;
-	public float turnSpeed = 0.15f;
+ 
+// ZERO GRAVITY IN THE SHIP - FLOAT AROUND USING WASD
+	
+public class PlayerMovement : MonoBehaviour {
+	
+	// movement stuff
+	public Rigidbody2D rb; 
+	//public float turnSpeed = 0.1f; // if want some rotation?
+	public float speed; 
+	
+	// sprite/animation switching depending on direction stuff
+	public Animator anim; 
+	public enum direction { idle, up, down, right, left }; 
+	public int currentDirection; 
 
 	// Use this for initialization
 	void Start () 
 	{
-		rigidbody.useGravity = false;
+	}
+
+	void Update()
+	{
+
 	}
 
 	void FixedUpdate ()
 	{
-		// Pressing spacebar adds upward momentum.
-		if (Input.GetButton ("Jump"))
-		{
-			rigidbody.AddRelativeForce (Vector3.up * speed);
-		}
-
-		// Press W or the up arrow key to turn upwards, and S or the down arrow key to turn downwards.
-		rigidbody.AddRelativeTorque ((Input.GetAxis ("Vertical")) * turnSpeed, 0, 0);
-
-		// Press A or the left arrow key to turn left, D or the right arrow key to turn right.
-		rigidbody.AddRelativeTorque (0, 0, (Input.GetAxis ("Horizontal")) * turnSpeed);
+		playerMove (); 
+		switchAnimation (currentDirection); 
 	}
 	
-	// Update is called once per frame
-	void Update () 
+	/* --------------------------------------------------------------------------------------------------------------------------
+	 * NO ARGS. NO RETURN. 
+	 * (1) depending on key pressed (WASD), add a force to push character in the appropriate direction
+	 * (2) change the current direction the player is 'facing' to change the animation 
+	 * (3) if no button is pressed, current direction is idle => idle sprite
+	 * -------------------------------------------------------------------------------------------------------------------------- */
+	
+	private void playerMove()
 	{
-	
+		if (Input.GetKeyDown (KeyCode.W)) 
+		{
+			rb.AddForce(Vector3.up * speed);
+			currentDirection = (int) direction.up;
+		}
+		
+		else if (Input.GetKeyDown (KeyCode.A)) 
+		{
+			rb.AddForce (Vector3.left * speed); 
+			currentDirection = (int) direction.left;
+		}
+		
+		else if (Input.GetKeyDown (KeyCode.S)) 
+		{
+			rb.AddForce (Vector3.left * speed); 
+			currentDirection = (int) direction.down;
+		}
+		
+		else if (Input.GetKeyDown (KeyCode.D)) 
+		{
+			rb.AddForce (Vector3.left * speed); 
+			currentDirection = (int) direction.right;
+		}
+		else 
+		{
+			currentDirection = (int) direction.idle;
+		}
 	}
-}
+	
+	/* --------------------------------------------------------------------------------------------------------------------------
+	 * ARG: current direction of the player movement 
+	 * (1) check inputted current direction - see which index in enum it corresponds to
+	 * (2) set that as the "direction" integer value for the sprite animation
+	 * -------------------------------------------------------------------------------------------------------------------------- */
+	
+	private void switchAnimation (int dir)
+	{
+		switch (dir) 
+		{
+		case (int) direction.up:
+			anim.SetInteger("direction", (int) direction.up);
+			break;
+			
+		case (int) direction.down:
+			anim.SetInteger("direction", (int) direction.down);
+			break;
+			
+		case (int) direction.right:
+			anim.SetInteger("direction", (int) direction.right);
+			break;
+			
+		case (int) direction.left:
+			anim.SetInteger("direction", (int) direction.left);
+			break;
+			
+		default:
+			break; 
+		}
+	}
+		}
