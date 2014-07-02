@@ -44,7 +44,18 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetKey (KeyCode.W)) 
 		{
 			rb.AddRelativeForce (Vector3.up * speed);
-			currentDirection = (int)direction.up;
+			if (Input.GetKey (KeyCode.A))
+			{
+				currentDirection = (int)direction.left;
+			}
+			else if (Input.GetKey (KeyCode.D))
+			{
+				currentDirection = (int)direction.right;
+			}
+			else 
+			{
+				currentDirection = (int)direction.up;
+			}
 		}
 
 		if (Input.GetKey (KeyCode.A)) 
@@ -56,7 +67,18 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetKey (KeyCode.S)) 
 		{
 			rb.AddRelativeForce (Vector3.down * speed); 
-			currentDirection = (int)direction.down;
+			if (Input.GetKey (KeyCode.A))
+			{
+				currentDirection = (int)direction.left;
+			}
+			else if (Input.GetKey (KeyCode.D))
+			{
+				currentDirection = (int)direction.right;
+			}
+			else 
+			{
+				currentDirection = (int)direction.down;
+			}
 		}
 
 		if (Input.GetKey (KeyCode.D)) 
