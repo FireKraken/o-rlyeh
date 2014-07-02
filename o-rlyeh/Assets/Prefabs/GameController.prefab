@@ -40,12 +40,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  sizeToSeePlayer: 20
-  sizeToSeeShip: 50
-  sizeToSeeSpace: 100
-  sizeInc: 5
-  currentState: 0
-  previousState: 0
+  sizeToSeePlayer: 2
+  sizeToSeeShip: 5
+  sizeToSeeSpace: 10
+  sizeInc: .5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -59,11 +59,12 @@ public class DialogueTracker : MonoBehaviour {
 
 	/* --------------------------------------------------------------------------------------------------------------------------
 	 * NO ARGS. NO RETURN. 
-	 * updates the player stat values (ap, like, susp) in the dialogue tracker to match the ones in progress tracker
+	 * when enter room corresponding to the daily quest, display the quest options
 	 * -------------------------------------------------------------------------------------------------------------------------- */
+	private void generateQuestOptions(){
 
+	}
 
-	
 	/* --------------------------------------------------------------------------------------------------------------------------
 	 * NO ARGS: string, the option the player picked to answer the NPC
 	 * (1) if option contains the string addSusp, then increment suspicion
