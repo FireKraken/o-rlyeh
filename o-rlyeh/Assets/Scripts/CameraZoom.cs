@@ -29,7 +29,6 @@ public class CameraZoom : MonoBehaviour {
 	{
 		switchCamera (); 
 		camZoom(); 
-		print (cam.orthographicSize);
 	}	
 
 	/* --------------------------------------------------------------------------------------------------------------------------
