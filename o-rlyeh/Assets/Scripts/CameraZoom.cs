@@ -29,6 +29,7 @@ public class CameraZoom : MonoBehaviour {
 	{
 		switchCamera (); 
 		camZoom(); 
+		print (cam.orthographicSize);
 	}	
 
 	/* --------------------------------------------------------------------------------------------------------------------------
@@ -88,58 +89,59 @@ public class CameraZoom : MonoBehaviour {
 			switch (currentState) 
 			{
 
-			// (1) switching to player view
+			// (1) switching to player view (zoom in) 
+			// *** SWITCH TO GUI CAMERA IF ZOOMED IN I.E. ABOUT TO INTERACT WITH CAPTAIN/ROOM
 			case (int) camera.player:
 				if (cam.orthographicSize <= sizeToSeePlayer)
 				{
 					cam.orthographicSize = sizeToSeePlayer; 
+					previousState = (int) camera.player;
 				}
 				else 
 				{
 					cam.orthographicSize -= sizeInc; 
-				}
-				previousState = (int) camera.player; 
+				} 
 				break;
 			
-			// (2) switching to ship view (must check if zooming out or in)
+			// (2) switching to ship view (must check if zooming out, if previously player view, or in, if previously space view)
 			case (int) camera.ship:
-				if (previousState == (int) camera.player)
+				if (previousState == (int) camera.player)	// zoom out
 				{
 					if (cam.orthographicSize >= sizeToSeeShip)
 					{
 						cam.orthographicSize = sizeToSeeShip; 
+						previousState = (int) camera.ship; 
 					}
 					else 
 					{
 						cam.orthographicSize += sizeInc; 
 					}
-					previousState = (int) camera.player; 
 				}
-				else if (previousState == (int) camera.ship)
+				else if (previousState == (int) camera.space)	// zoom in
 				{
 					if (cam.orthographicSize <= sizeToSeeShip)
 					{
 						cam.orthographicSize = sizeToSeeShip; 
+						previousState = (int) camera.ship; 
 					}
 					else 
 					{
 						cam.orthographicSize -= sizeInc; 
 					}
-					previousState = (int) camera.ship; 
 				}
 				break;
 
-			// (3) switching to space view
+			// (3) switching to space view (zoom out)
 			case (int) camera.space:
 				if (cam.orthographicSize >= sizeToSeeSpace)
 				{
 					cam.orthographicSize = sizeToSeeSpace; 
+					previousState = (int) camera.space; 
 				}
 				else 
 				{
 					cam.orthographicSize += sizeInc; 
 				}
-				previousState = (int) camera.space; 
 				break;
 
 			default:
