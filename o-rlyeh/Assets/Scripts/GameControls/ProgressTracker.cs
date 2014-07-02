@@ -11,6 +11,7 @@ public class ProgressTracker : MonoBehaviour {
 	public int ap;		// action points - max 5 (regenerate if sleep, -- if talk or action)
 	public int like;	// liking level - 0 to 10 
 	public int susp; 	// suspicion level - 0 to 4
+	public int lp;		// pug love
 
 	// TO UPDATE THE STATS WITHIN THE DIALOGUE TRACKER
 	public DialogueTracker dtrack; 
@@ -35,6 +36,13 @@ public class ProgressTracker : MonoBehaviour {
 
 	/* --------------------------------------------------------------------------------------------------------------------------
 	 * NO ARGS. NO RETURN. 
+	 * -------------------------------------------------------------------------------------------------------------------------- */
+	private void generateEnding(){
+
+	}
+
+	/* --------------------------------------------------------------------------------------------------------------------------
+	 * NO ARGS. NO RETURN. 
 	 * updates the player stat values (ap, like, susp) in the dialogue tracker to match the ones in progress tracker
 	 * -------------------------------------------------------------------------------------------------------------------------- */
 
@@ -43,5 +51,6 @@ public class ProgressTracker : MonoBehaviour {
 		dtrack.ap = ap;
 		dtrack.like = like;
 		dtrack.susp = susp; 
+		dtrack.lp = lp; 
 	}
 }
