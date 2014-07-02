@@ -16,8 +16,8 @@ public class CameraZoom : MonoBehaviour {
 
 	// WHICH CAMERA VIEW ARE WE CURRENTLY USING
 	public enum camera { player, ship, space }; 
-	public int currentState; 	// will take one of the enum values/indeces
-	public int previousState; 
+	private int currentState; 	// will take one of the enum values/indeces
+	private int previousState; 
 	
 	void Start () 
 	{
