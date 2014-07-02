@@ -7,7 +7,6 @@ public class CameraZoom : MonoBehaviour {
 
 	// GET THESE GAMEOBJECTS/COMPONENTS
 	public Camera cam; 
-	public Transform target;	// the player's coordinates 
 
 	// CAMERA SIZES TO SWITCH TO WHEN ZOOM IN/OUT
 	public float sizeToSeePlayer;	// following the player 
