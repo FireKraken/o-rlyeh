@@ -194,7 +194,7 @@ public class DialogueTracker : MonoBehaviour {
 
 		// DAY 1 - PUG
 		pug [0] [0] = new dialogueSegment ("You return, minion.",
-		                                   	3,	"Yes master, I wantd to bask in your allmighty glory to start the day." + addLP,
+		                                   	3,	"Yes master, I wanted to bask in your allmighty glory to start the day." + addLP,
 		                                   		"Yes, glorious master.",
 		                                   		"...",
 		                                  	0, null, null, null); 
@@ -249,5 +249,31 @@ public class DialogueTracker : MonoBehaviour {
 
 		// DAY 2 - PUG 
 
+		// IF DID CAPTAIN'S QUEST OR NOTHING
+		pug [1] [0] = new dialogueSegment ("You defy me, minion? You dare?! The ship is still moving towards me!",
+		                                   3,	"MAKE EXCUSES",
+		                                   		"GROVEL AND APOLOGIZE",
+		                                   		"...",
+		                                   1, 	"No matter. There is still time.", null, null); 
+
+		// IF DID PUG QUEST
+		pug [1] [1] = new dialogueSegment ("Well done, my minion. The ship has slowed down!		",
+		                                   3,	"GRACIOUSLY ACCEPT" + addLP,
+		                                   		"RELUCTANTLY ACCEPT",
+		                                   		"Graciously accept and praise the pug lord." + addLP,
+		                                   0, null, null, null); 
+
+		pug [1] [2] = new dialogueSegment ("Ah, you come to me for advice. A wise decision. This machine, this is what is bringing you towards me, is it not? Find a way to sabotage the machine so that it can not move towards me anymore.",
+		                                   3,	"Yes, Great Slobbery One, Devourer of Stars (and Treats). I will gladly do your bidding, you beautiful being.",
+		                                   		"Very well, I will do your bidding.",
+		                                   		"...",
+		                                   0, null, null, null);
+
+		// DAY 2 - QUEST
+		quest [1] = new dialogueSegment ("What do you want to do?", 
+		                                 3, "Get coffee with milk" + addLike,
+		                                 	"Get coffee with sugar",
+		                                 	"Poison coffee" + addLP, 
+		                                 0, null, null, null);
 	}
 }
