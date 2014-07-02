@@ -45,47 +45,25 @@ public class PlayerRotationalMovement : MonoBehaviour {
 		if (Input.GetKey (KeyCode.W)) 
 		{
 			rb.AddRelativeForce (Vector3.up * speed);
-			if (Input.GetKey (KeyCode.A))
-			{
-				currentDirection = (int)direction.left;
-			}
-			else if (Input.GetKey (KeyCode.D))
-			{
-				currentDirection = (int)direction.right;
-			}
-			else 
-			{
-				currentDirection = (int)direction.up;
-			}
+			currentDirection = (int)direction.up;
 		}
 
 		if (Input.GetKey (KeyCode.S)) 
 		{
 			rb.AddRelativeForce (Vector3.down * speed); 
-			if (Input.GetKey (KeyCode.A))
-			{
-				currentDirection = (int)direction.left;
-			}
-			else if (Input.GetKey (KeyCode.D))
-			{
-				currentDirection = (int)direction.right;
-			}
-			else 
-			{
-				currentDirection = (int)direction.down;
-			}
+			currentDirection = (int)direction.down;
 		}
 		
 		if (Input.GetKey (KeyCode.A)) 
 		{
 			rigidbody.AddRelativeTorque (0, 0, turnSpeed);
-			currentDirection = (int)direction.left;
+			//currentDirection = (int)direction.left;
 		}
 		
 		if (Input.GetKey (KeyCode.D)) 
 		{
 			rigidbody.AddRelativeTorque (0, 0, -turnSpeed);
-			currentDirection = (int)direction.right;
+			//currentDirection = (int)direction.right;
 		}
 		
 		if (!Input.anyKey)

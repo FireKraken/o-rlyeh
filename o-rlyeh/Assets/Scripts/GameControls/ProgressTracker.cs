@@ -19,7 +19,8 @@ public class ProgressTracker : MonoBehaviour {
 	public int day;			// 0 to 4 = 5 days total 
 	public bool receivedCptQuest;	// true if speak to the cpt and you get cpt quest
 	public bool receivedPugQuest;	// true if speak to the pug and you get pug quest
-
+	public bool completedCptQuest;	// true if you do what the CPT asks
+	public bool completedPugQuest;	// true if you do what the PUG asks
 
 	void Start () 
 	{

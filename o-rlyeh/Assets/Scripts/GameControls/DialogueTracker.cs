@@ -35,12 +35,16 @@ public class DialogueTracker : MonoBehaviour {
 	private string addSusp = "add suspicion";
 	private string addLike = "add liking"; 
 
-	// GAME FLOW STUFF
+	// FOR DIALOGUE/GAME FLOW
 	public int day;			// 0 to 4 = 5 days total 
-	public bool receivedCptQuest;	// true if speak to the cpt and you get cpt quest
-	public bool receivedPugQuest;	// true if speak to the pug and you get pug quest
-	public bool completedCptQuest;	// true if you do what the cpt asks
-	public bool completedPugQuest;	// true if you do what the pug asks
+
+	public bool receivedCptQuest;	// true if speak to the CPT and you get cpt quest
+	public bool receivedPugQuest;	// true if speak to the PUG and you get pug quest
+
+	public bool completedCptQuest;	// true if you do what the CPT asks
+	public bool completedPugQuest;	// true if you do what the PUG asks
+
+	
 
 	void Start () 
 	{
@@ -54,6 +58,13 @@ public class DialogueTracker : MonoBehaviour {
 	}
 
 	/* --------------------------------------------------------------------------------------------------------------------------
+	 * NO ARGS. NO RETURN. 
+	 * updates the player stat values (ap, like, susp) in the dialogue tracker to match the ones in progress tracker
+	 * -------------------------------------------------------------------------------------------------------------------------- */
+
+
+	
+	/* --------------------------------------------------------------------------------------------------------------------------
 	 * NO ARGS: string, the option the player picked to answer the NPC
 	 * (1) if option contains the string addSusp, then increment suspicion
 	 * (2) if option contains the string addLike, then increment liking 
@@ -61,14 +72,19 @@ public class DialogueTracker : MonoBehaviour {
 	 * -------------------------------------------------------------------------------------------------------------------------- */
 	private void updateDStats(string option)
 	{
+		// (1) add suspicion 
 		if (option.Contains (addSusp)) 
 		{
 			susp += suspInc;
 		}
+
+		// (2) add liking
 		else if (option.Contains (addLike))
 		{
 			like += likeInc; 
 		}
+
+		// (3) update in progress tracker
 		updatePStats (); 
 	}
 
