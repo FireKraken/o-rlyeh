@@ -3,6 +3,7 @@ using System.Collections;
 
 // ATTACH TO GAME CONTROLLER
 // controls the dialogue (which conversations are triggered)
+// updates player stats depending on dialogue responses
 
 public class DialogueTracker : MonoBehaviour {
 
@@ -10,6 +11,9 @@ public class DialogueTracker : MonoBehaviour {
 	public int ap;		// action points - max 5 (regenerate if sleep, -- if talk or action)
 	public int like;	// liking level - 0 to 10 
 	public int susp; 	// suspicion level - 0 to 4
+
+	public int likeInc; 
+	public int suspInc; 
 
 	// TO UPDATE THE STATS WITHIN THE PROGRESS TRACKER
 	public DialogueTracker ptrack; 
@@ -27,6 +31,17 @@ public class DialogueTracker : MonoBehaviour {
 	private dialogueSegment[][] pug;	// pug conversations
 	private dialogueSegment[][] cpt; 	// captain conversations
 
+	// STRING CHECKING TO UPDATE STATS
+	private string addSusp = "add suspicion";
+	private string addLike = "add liking"; 
+
+	// GAME FLOW STUFF
+	public int day;			// 0 to 4 = 5 days total 
+	public bool receivedCptQuest;	// true if speak to the cpt and you get cpt quest
+	public bool receivedPugQuest;	// true if speak to the pug and you get pug quest
+	public bool completedCptQuest;	// true if you do what the cpt asks
+	public bool completedPugQuest;	// true if you do what the pug asks
+
 	void Start () 
 	{
 		
@@ -36,6 +51,25 @@ public class DialogueTracker : MonoBehaviour {
 	void Update () 
 	{
 
+	}
+
+	/* --------------------------------------------------------------------------------------------------------------------------
+	 * NO ARGS: string, the option the player picked to answer the NPC
+	 * (1) if option contains the string addSusp, then increment suspicion
+	 * (2) if option contains the string addLike, then increment liking 
+	 * (3) update the stats in progress tracker
+	 * -------------------------------------------------------------------------------------------------------------------------- */
+	private void updateDStats(string option)
+	{
+		if (option.Contains (addSusp)) 
+		{
+			susp += suspInc;
+		}
+		else if (option.Contains (addLike))
+		{
+			like += likeInc; 
+		}
+		updatePStats (); 
 	}
 
 	/* --------------------------------------------------------------------------------------------------------------------------

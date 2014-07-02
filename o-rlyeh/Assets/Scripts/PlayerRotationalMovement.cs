@@ -1,30 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
- 
+
 // ZERO GRAVITY IN THE SHIP - FLOAT AROUND USING WASD
-	
-public class PlayerMovement : MonoBehaviour {
+
+public class PlayerRotationalMovement : MonoBehaviour {
 	
 	// movement stuff
-	public Rigidbody2D rb; 
+	public Rigidbody rb; 
 	//public float turnSpeed = 0.1f;	// if want some rotation?
 	public float speed; 
+	public float turnSpeed; 
 	
 	// sprite/animation switching depending on direction stuff
 	public Animator anim; 
 	private enum direction { idle, up, down, right, left }; 
 	private int currentDirection; 
-
+	
 	// Use this for initialization
 	void Start () 
 	{
 	}
-
+	
 	void Update()
 	{
-
+		
 	}
-
+	
 	void FixedUpdate ()
 	{
 		playerMove (); 
@@ -40,7 +41,7 @@ public class PlayerMovement : MonoBehaviour {
 	
 	private void playerMove()
 	{
-
+		
 		if (Input.GetKey (KeyCode.W)) 
 		{
 			rb.AddRelativeForce (Vector3.up * speed);
@@ -56,12 +57,6 @@ public class PlayerMovement : MonoBehaviour {
 			{
 				currentDirection = (int)direction.up;
 			}
-		}
-
-		if (Input.GetKey (KeyCode.A)) 
-		{
-			rb.AddRelativeForce (Vector3.left * speed); 
-			currentDirection = (int)direction.left;
 		}
 
 		if (Input.GetKey (KeyCode.S)) 
@@ -80,13 +75,19 @@ public class PlayerMovement : MonoBehaviour {
 				currentDirection = (int)direction.down;
 			}
 		}
-
+		
+		if (Input.GetKey (KeyCode.A)) 
+		{
+			rigidbody.AddRelativeTorque (0, 0, turnSpeed);
+			currentDirection = (int)direction.left;
+		}
+		
 		if (Input.GetKey (KeyCode.D)) 
 		{
-			rb.AddRelativeForce (Vector3.right * speed); 
+			rigidbody.AddRelativeTorque (0, 0, -turnSpeed);
 			currentDirection = (int)direction.right;
 		}
-
+		
 		if (!Input.anyKey)
 		{
 			currentDirection = (int) direction.idle;
@@ -106,7 +107,7 @@ public class PlayerMovement : MonoBehaviour {
 		case (int) direction.idle:
 			anim.SetInteger("direction", (int) direction.idle);
 			break;
-
+			
 		case (int) direction.up:
 			anim.SetInteger("direction", (int) direction.up);
 			break;
@@ -127,4 +128,4 @@ public class PlayerMovement : MonoBehaviour {
 			break; 
 		}
 	}
-		}
+}

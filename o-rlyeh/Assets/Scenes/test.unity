@@ -118,7 +118,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   speed: .800000012
   anim: {fileID: 0}
-  currentDirection: 0
 --- !u!54 &18008513
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -587,8 +586,9 @@ GameObject:
   - 4: {fileID: 697772349}
   - 212: {fileID: 697772348}
   - 114: {fileID: 697772347}
-  - 50: {fileID: 697772346}
   - 95: {fileID: 697772345}
+  - 114: {fileID: 697772350}
+  - 54: {fileID: 697772346}
   m_Layer: 0
   m_Name: FemalePlayer
   m_TagString: Untagged
@@ -611,21 +611,20 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!50 &697772346
-Rigidbody2D:
+--- !u!54 &697772346
+Rigidbody:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5000000, guid: 60f15bf68c3bd8646afec23db92a3272,
-    type: 2}
-  m_PrefabInternal: {fileID: 772190769}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 697772344}
+  serializedVersion: 2
   m_Mass: 1
-  m_LinearDrag: 0
+  m_Drag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 0
-  m_FixedAngle: 0
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &697772347
 MonoBehaviour:
@@ -634,15 +633,14 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 772190769}
   m_GameObject: {fileID: 697772344}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c67dd6b375bc71b458227e609c5c9a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 697772346}
+  rb: {fileID: 5000000, guid: 60f15bf68c3bd8646afec23db92a3272, type: 2}
   speed: 10
   anim: {fileID: 697772345}
-  currentDirection: 0
 --- !u!212 &697772348
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -678,6 +676,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &697772350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 697772344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e69633eabe5ac34796465155ab4176c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 697772346}
+  speed: 10
+  turnSpeed: .5
+  anim: {fileID: 697772345}
 --- !u!1 &768738683
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,7 +816,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 60f15bf68c3bd8646afec23db92a3272, type: 2}
+      propertyPath: m_Name
+      value: FemalePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 60f15bf68c3bd8646afec23db92a3272, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5000000, guid: 60f15bf68c3bd8646afec23db92a3272, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 60f15bf68c3bd8646afec23db92a3272, type: 2}
   m_RootGameObject: {fileID: 697772344}
   m_IsPrefabParent: 0
@@ -998,8 +1020,6 @@ MonoBehaviour:
   sizeToSeeShip: 50
   sizeToSeeSpace: 100
   sizeInc: 5
-  currentState: 0
-  previousState: 0
 --- !u!4 &1584605567
 Transform:
   m_ObjectHideFlags: 0
@@ -1216,7 +1236,6 @@ MonoBehaviour:
   rb: {fileID: 1901559755}
   speed: 10
   anim: {fileID: 1901559754}
-  currentDirection: 0
 --- !u!212 &1901559757
 SpriteRenderer:
   m_ObjectHideFlags: 0

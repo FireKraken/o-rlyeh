@@ -3,6 +3,7 @@ using System.Collections;
 
 // ATTACH TO GAME CONTROLLER
 // updates the player stats and controls the general flow of the game
+// most variables are public for debugging reasons
 
 public class ProgressTracker : MonoBehaviour {
 
@@ -15,7 +16,9 @@ public class ProgressTracker : MonoBehaviour {
 	public DialogueTracker dtrack; 
 
 	// GAME FLOW STUFF
-	public int day;		// 0 to 4 = 5 days total 
+	public int day;			// 0 to 4 = 5 days total 
+	public bool receivedCptQuest;	// true if speak to the cpt and you get cpt quest
+	public bool receivedPugQuest;	// true if speak to the pug and you get pug quest
 
 
 	void Start () 
