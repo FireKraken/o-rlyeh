@@ -15,6 +15,13 @@ public class PlayerMovement : MonoBehaviour {
 	private enum direction { idle, up, down, right, left }; 
 	private int currentDirection; 
 
+	// box colliders
+	public BoxCollider2D idleBox; 
+	public BoxCollider2D upBox;
+	public BoxCollider2D downBox;
+	public BoxCollider2D rightBox;
+	public BoxCollider2D leftBox; 
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -105,22 +112,47 @@ public class PlayerMovement : MonoBehaviour {
 		{
 		case (int) direction.idle:
 			anim.SetInteger("direction", (int) direction.idle);
+			idleBox.enabled = true; 
+			upBox.enabled = false; 
+			downBox.enabled = false; 
+			rightBox.enabled = false; 
+			leftBox.enabled = false; 
 			break;
 
 		case (int) direction.up:
 			anim.SetInteger("direction", (int) direction.up);
+			idleBox.enabled = false; 
+			upBox.enabled = true; 
+			downBox.enabled = false; 
+			rightBox.enabled = false; 
+			leftBox.enabled = false; 
 			break;
 			
 		case (int) direction.down:
 			anim.SetInteger("direction", (int) direction.down);
+			idleBox.enabled = false; 
+			upBox.enabled = false; 
+			downBox.enabled = true; 
+			rightBox.enabled = false; 
+			leftBox.enabled = false; 
 			break;
 			
 		case (int) direction.right:
 			anim.SetInteger("direction", (int) direction.right);
+			idleBox.enabled = false; 
+			upBox.enabled = false; 
+			downBox.enabled = false; 
+			rightBox.enabled = true; 
+			leftBox.enabled = false; 
 			break;
 			
 		case (int) direction.left:
 			anim.SetInteger("direction", (int) direction.left);
+			idleBox.enabled = false; 
+			upBox.enabled = false; 
+			downBox.enabled = false; 
+			rightBox.enabled = false; 
+			leftBox.enabled = true; 
 			break;
 			
 		default:

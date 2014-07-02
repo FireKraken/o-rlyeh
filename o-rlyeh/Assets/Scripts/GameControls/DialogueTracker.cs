@@ -36,7 +36,8 @@ public class DialogueTracker : MonoBehaviour {
 	private string addLike = "add liking"; 
 
 	// FOR DIALOGUE/GAME FLOW
-	public int day;			// 0 to 4 = 5 days total 
+	public int day;				// 0 to 4 = 5 days total 
+	public int conversation;	// where are we in the dialogue (second index of matrix)
 
 	public bool receivedCptQuest;	// true if speak to the CPT and you get cpt quest
 	public bool receivedPugQuest;	// true if speak to the PUG and you get pug quest
@@ -61,8 +62,21 @@ public class DialogueTracker : MonoBehaviour {
 	 * NO ARGS. NO RETURN. 
 	 * when enter room corresponding to the daily quest, display the quest options
 	 * -------------------------------------------------------------------------------------------------------------------------- */
-	private void generateQuestOptions(){
 
+
+	/* --------------------------------------------------------------------------------------------------------------------------
+	 * NO ARGS. NO RETURN. 
+	 * when enter room corresponding to the daily quest, display the quest options
+	 * -------------------------------------------------------------------------------------------------------------------------- */
+	private void generateQuestOptions(){
+		if (receivedCptQuest) 
+		{
+			// show the option to do cpt quest
+		}
+		if (receivedPugQuest)
+		{
+			// show the option to do pug quest
+		}
 	}
 
 	/* --------------------------------------------------------------------------------------------------------------------------
