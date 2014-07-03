@@ -15,7 +15,7 @@ public class CameraZoom : MonoBehaviour {
 	public float sizeInc;
 
 	// WHICH CAMERA VIEW ARE WE CURRENTLY USING
-	public enum camera { player, ship, space }; 
+	public enum camView { player, ship, space }; 
 	private int currentState; 	// will take one of the enum values/indeces
 	private int previousState; 
 	
@@ -27,7 +27,7 @@ public class CameraZoom : MonoBehaviour {
 	void Update () 
 	{
 		switchCamera (); 
-		camZoom(); 
+		camZoom (); 
 	}	
 
 	/* --------------------------------------------------------------------------------------------------------------------------
@@ -46,13 +46,13 @@ public class CameraZoom : MonoBehaviour {
 	 * (2) if press E key, zoom out
 	 * -------------------------------------------------------------------------------------------------------------------------- */
 
-	private void switchCamera()
+	private void switchCamera ()
 	{
 		if (Input.GetKeyDown (KeyCode.Q))
 		{
-			if (currentState == (int) camera.player)
+			if (currentState == (int) camView.player)
 			{
-				currentState = (int) camera.space; 
+				currentState = (int) camView.space; 
 			}
 			else 
 			{
@@ -61,9 +61,9 @@ public class CameraZoom : MonoBehaviour {
 		}
 		if (Input.GetKeyDown (KeyCode.E))
 		{
-			if (currentState == (int) camera.space)
+			if (currentState == (int) camView.space)
 			{
-				currentState = (int) camera.player; 
+				currentState = (int) camView.player; 
 			}
 			else 
 			{
@@ -89,11 +89,11 @@ public class CameraZoom : MonoBehaviour {
 
 			// (1) switching to player view (zoom in) 
 			// *** SWITCH TO GUI CAMERA IF ZOOMED IN I.E. ABOUT TO INTERACT WITH CAPTAIN/ROOM
-			case (int) camera.player:
+			case (int) camView.player:
 				if (cam.orthographicSize <= sizeToSeePlayer)
 				{
 					cam.orthographicSize = sizeToSeePlayer; 
-					previousState = (int) camera.player;
+					previousState = (int) camView.player;
 				}
 				else 
 				{
@@ -102,25 +102,25 @@ public class CameraZoom : MonoBehaviour {
 				break;
 			
 			// (2) switching to ship view (must check if zooming out, if previously player view, or in, if previously space view)
-			case (int) camera.ship:
-				if (previousState == (int) camera.player)	// zoom out
+			case (int) camView.ship:
+				if (previousState == (int) camView.player)	// zoom out
 				{
 					if (cam.orthographicSize >= sizeToSeeShip)
 					{
 						cam.orthographicSize = sizeToSeeShip; 
-						previousState = (int) camera.ship; 
+						previousState = (int) camView.ship; 
 					}
 					else 
 					{
 						cam.orthographicSize += sizeInc; 
 					}
 				}
-				else if (previousState == (int) camera.space)	// zoom in
+				else if (previousState == (int) camView.space)	// zoom in
 				{
 					if (cam.orthographicSize <= sizeToSeeShip)
 					{
 						cam.orthographicSize = sizeToSeeShip; 
-						previousState = (int) camera.ship; 
+						previousState = (int) camView.ship; 
 					}
 					else 
 					{
@@ -130,11 +130,11 @@ public class CameraZoom : MonoBehaviour {
 				break;
 
 			// (3) switching to space view (zoom out)
-			case (int) camera.space:
+			case (int) camView.space:
 				if (cam.orthographicSize >= sizeToSeeSpace)
 				{
 					cam.orthographicSize = sizeToSeeSpace; 
-					previousState = (int) camera.space; 
+					previousState = (int) camView.space; 
 				}
 				else 
 				{
