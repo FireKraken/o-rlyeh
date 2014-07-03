@@ -47,12 +47,7 @@ public class ProgressTracker : MonoBehaviour {
 	void Update () 
 	{
 
-		// go to sleep and wake up
-		if (endTheDay) {
-			guiTexture.enabled = true;	
-			endDay (); 
-		}
-
+		endDay ();
 		// if did both days
 		if (day > numDays) 
 		{
@@ -64,20 +59,32 @@ public class ProgressTracker : MonoBehaviour {
 	/* --------------------------------------------------------------------------------------------------------------------------
 	 * NO ARGS. NO RETURN. 
 	 * SLEEP = FADE OUT TO BLACK, THEN FADE BACK INTO SAME SCENE
+	 * if the player chose to go to bed, then trigger end of day (which increments the "day" int and fades out/in)
 	 * -------------------------------------------------------------------------------------------------------------------------- */
 	private void endDay()
 	{
-		// If the scene is starting...
-		if(dayStarting)
+		/*
+		 *if (dtrack.goToSleep)
+		 *{
+		 *	endTheDay = true; 
+		 *	dtrack.goToSleep = false; 
+		 *}
+		 */
+		if (endTheDay)
 		{
-			// ... call the StartScene function.
-			StartScene();
-		}
-		else 
-		{
-			// Make sure the texture is enabled.
-			guiTexture.enabled = true;
-			EndScene (); 
+			guiTexture.enabled = true;	
+			// If the scene is starting...
+			if(dayStarting)
+			{
+				// ... call the StartScene function.
+				StartScene();
+			}
+			else 
+			{
+				// Make sure the texture is enabled.
+				guiTexture.enabled = true;
+				EndScene (); 
+			}
 		}
 	}
 	
@@ -110,6 +117,7 @@ public class ProgressTracker : MonoBehaviour {
 			// The scene is no longer starting.
 			dayStarting = false;
 			endTheDay = false; 
+			day++; 
 		}
 	}
 	
