@@ -156,7 +156,7 @@ public class ProgressTracker : MonoBehaviour {
 			Application.LoadLevel ("PugRevealed");
 		}
 		// DEFAULT ENDING: mission completes = ship crashes into pug
-		if (end3)
+		if (end3 || day > numDays)
 		{
 			Application.LoadLevel ("PugDies");
 		}
