@@ -36,9 +36,9 @@ public class DialogueTracker : MonoBehaviour {
 
 			if (m > 0)
 			{
+				options = new string[m];
 				for (int i = 0; i < m; i++)
 				{
-					options = new string[m];
 					options[i] = opts[i]; 
 				}
 			}
@@ -49,9 +49,9 @@ public class DialogueTracker : MonoBehaviour {
 
 			if (n > 0)
 			{
+				responses = new string[n];
 				for (int i = 0; i < n; i++)
 				{
-					responses = new string[n];
 					responses[i] = resps[i]; 
 				}
 			}
