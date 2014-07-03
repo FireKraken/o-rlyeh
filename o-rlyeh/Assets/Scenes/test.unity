@@ -546,6 +546,8 @@ GameObject:
   - 61: {fileID: 697772352}
   - 61: {fileID: 697772351}
   - 61: {fileID: 697772350}
+  - 114: {fileID: 697772356}
+  - 61: {fileID: 697772355}
   m_Layer: 0
   m_Name: FemalePlayer
   m_TagString: Untagged
@@ -579,7 +581,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 0
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -699,6 +701,30 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 9.69000053, y: 12.1300001}
   m_Center: {x: 0, y: 0}
+--- !u!61 &697772355
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6100010, guid: 60f15bf68c3bd8646afec23db92a3272,
+    type: 2}
+  m_PrefabInternal: {fileID: 1720703378}
+  m_GameObject: {fileID: 697772344}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 6, y: 6}
+  m_Center: {x: 0, y: 0}
+--- !u!114 &697772356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 60f15bf68c3bd8646afec23db92a3272,
+    type: 2}
+  m_PrefabInternal: {fileID: 1720703378}
+  m_GameObject: {fileID: 697772344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b20456d7866efe4682425c8b59628c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &768738683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,6 +1336,78 @@ Prefab:
   m_RootGameObject: {fileID: 1401239722}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &2063821138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2063821141}
+  - 131: {fileID: 2063821140}
+  - 114: {fileID: 2063821139}
+  m_Layer: 0
+  m_Name: GameTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2063821139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2063821138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc46fa68e43da54ea24199b4f99fdc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ap: 0
+  like: 0
+  susp: 0
+  lp: 0
+  dtrack: {fileID: 0}
+  day: 0
+  receivedCptQuest: 0
+  receivedPugQuest: 0
+  completedCptQuest: 0
+  completedPugQuest: 0
+  fadeSpeed: 1.5
+  dayStarting: 0
+  endTheDay: 0
+--- !u!131 &2063821140
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2063821138}
+  m_Enabled: 0
+  m_Texture: {fileID: 2800000, guid: 1e59a50ab5cbadd4d887a3fc208f4fc5, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_PixelInset:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!4 &2063821141
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2063821138}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
 --- !u!1001 &2118328887
 Prefab:
   m_ObjectHideFlags: 0

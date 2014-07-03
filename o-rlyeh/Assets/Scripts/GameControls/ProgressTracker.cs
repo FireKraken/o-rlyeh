@@ -28,6 +28,17 @@ public class ProgressTracker : MonoBehaviour {
 	public bool completedCptQuest;	// true if you do what the CPT asks
 	public bool completedPugQuest;	// true if you do what the PUG asks
 
+	// END OF DAY FADE IO STUFF
+	public float fadeSpeed = 1.5f;          // Speed that the screen fades to and from black.
+	public bool dayStarting = false;      // Whether or not the scene is still fading in.
+	public bool endTheDay  = false ; 
+
+	void Awake()
+	{
+		// Set the texture so that it is the the size of the screen and covers it.
+		guiTexture.pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
+	}
+	
 	void Start () 
 	{
 		
@@ -36,6 +47,13 @@ public class ProgressTracker : MonoBehaviour {
 	void Update () 
 	{
 
+		// go to sleep and wake up
+		if (endTheDay) {
+			guiTexture.enabled = true;	
+			endDay (); 
+		}
+
+		// if did both days
 		if (day > numDays) 
 		{
 			generateEnding (); 
@@ -45,16 +63,77 @@ public class ProgressTracker : MonoBehaviour {
 
 	/* --------------------------------------------------------------------------------------------------------------------------
 	 * NO ARGS. NO RETURN. 
-	 * if surpassed total number of days (i.e. exiting wormhole), generate one of currently 4 endings
+	 * SLEEP = FADE OUT TO BLACK, THEN FADE BACK INTO SAME SCENE
 	 * -------------------------------------------------------------------------------------------------------------------------- */
+	private void endDay()
+	{
+		// If the scene is starting...
+		if(dayStarting)
+		{
+			// ... call the StartScene function.
+			StartScene();
+		}
+		else 
+		{
+			// Make sure the texture is enabled.
+			guiTexture.enabled = true;
+			EndScene (); 
+		}
+	}
+	
+	void FadeToClear ()
+	{
+		// Lerp the colour of the texture between itself and transparent.
+		guiTexture.color = Color.Lerp(guiTexture.color, Color.clear, fadeSpeed * Time.deltaTime);
+	}
+	
+	
+	void FadeToBlack ()
+	{
+		// Lerp the colour of the texture between itself and black.
+		guiTexture.color = Color.Lerp(guiTexture.color, Color.black, fadeSpeed * Time.deltaTime);
+	}
+	
+	
+	void StartScene ()
+	{
+		// Fade the texture to clear.
+		FadeToClear();
+		
+		// If the texture is almost clear...
+		if(guiTexture.color.a <= 0.05f)
+		{
+			// ... set the colour to clear and disable the GUITexture.
+			guiTexture.color = Color.clear;
+			guiTexture.enabled = false;
+			
+			// The scene is no longer starting.
+			dayStarting = false;
+			endTheDay = false; 
+		}
+	}
+	
+	
+	public void EndScene ()
+	{		
+		// Start fading towards black.
+		FadeToBlack();
 
+		// If the screen is almost black...
+		if (guiTexture.color.a >= 0.95f)
+		{
+			guiTexture.color = Color.black;
 
-
+			dayStarting = true; 
+		}
+	}
+	
 	/* --------------------------------------------------------------------------------------------------------------------------
 	 * NO ARGS. NO RETURN. 
 	 * if surpassed total number of days (i.e. exiting wormhole), generate one of currently 4 endings
 	 * -------------------------------------------------------------------------------------------------------------------------- */
-	private void generateEnding(){
+	private void generateEnding()
+	{
 		// ending 1 - full liking = CPT DIES FOR YOU
 		// ending 2 - 2/3 liking & Max 1/3  suspicion = CPT REVEALS KEY CODE
 		// ending 3 - less than 2/3 &  More than 1/3 suspicion = SHIP FLIES INTO PUG
