@@ -3,6 +3,11 @@
 --- !u!78 &1
 TagManager:
   tags:
+  - MessHall
+  - EngineRoom
+  - CrewQuarters
+  - ObservationDeck
+  - Bridge
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
