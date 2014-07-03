@@ -46,3 +46,35 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
+  - name: StarField
+    userID: 1
+    uniqueID: 2045913257
+    locked: 0
+  - name: StarPug
+    userID: 2
+    uniqueID: 2324986883
+    locked: 0
+  - name: BehindShip
+    userID: 3
+    uniqueID: 2623021847
+    locked: 0
+  - name: Exhaust
+    userID: 8
+    uniqueID: 44412975
+    locked: 0
+  - name: Ship
+    userID: 4
+    uniqueID: 286543829
+    locked: 0
+  - name: Player
+    userID: 5
+    uniqueID: 1915993373
+    locked: 0
+  - name: RoomObjects
+    userID: 6
+    uniqueID: 333159601
+    locked: 0
+  - name: InFront
+    userID: 7
+    uniqueID: 2195163329
+    locked: 0

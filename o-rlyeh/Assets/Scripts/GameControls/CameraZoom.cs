@@ -48,6 +48,7 @@ public class CameraZoom : MonoBehaviour {
 
 	private void switchCamera ()
 	{
+
 		if (Input.GetKeyDown (KeyCode.Q))
 		{
 			if (currentState == (int) camView.player)
@@ -70,6 +71,19 @@ public class CameraZoom : MonoBehaviour {
 				currentState++; 
 			}
 		}
+
+		/*
+		if (Input.GetKeyDown (KeyCode.Q))
+		{
+			if (currentState == (int) camView.ship) currentState = (int) camView.player; 
+			else currentState = (int) camView.ship;
+		}
+		if (Input.GetKeyDown (KeyCode.E))
+		{
+			if (currentState == (int) camView.ship) currentState = (int) camView.player; 
+			else currentState = (int) camView.ship;
+		}
+		*/
 	}
 
 	/* --------------------------------------------------------------------------------------------------------------------------
