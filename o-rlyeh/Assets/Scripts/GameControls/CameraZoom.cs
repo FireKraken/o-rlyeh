@@ -14,6 +14,9 @@ public class CameraZoom : MonoBehaviour {
 	public float sizeToSeeSpace; 	// zoom out twice
 	public float sizeInc;
 
+	// to switch ship views
+	public GameObject shipOut; 
+
 	// WHICH CAMERA VIEW ARE WE CURRENTLY USING
 	public enum camView { player, ship, space }; 
 	private int currentState; 	// will take one of the enum values/indeces
@@ -28,6 +31,11 @@ public class CameraZoom : MonoBehaviour {
 	{
 		switchCamera (); 
 		camZoom (); 
+
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			Application.LoadLevel ("TitleScreen");
+		}
 	}	
 
 	/* --------------------------------------------------------------------------------------------------------------------------
@@ -104,6 +112,7 @@ public class CameraZoom : MonoBehaviour {
 			// (1) switching to player view (zoom in) 
 			// *** SWITCH TO GUI CAMERA IF ZOOMED IN I.E. ABOUT TO INTERACT WITH CAPTAIN/ROOM
 			case (int) camView.player:
+				shipOut.SetActive (false);
 				if (cam.orthographicSize <= sizeToSeePlayer)
 				{
 					cam.orthographicSize = sizeToSeePlayer; 
@@ -117,6 +126,7 @@ public class CameraZoom : MonoBehaviour {
 			
 			// (2) switching to ship view (must check if zooming out, if previously player view, or in, if previously space view)
 			case (int) camView.ship:
+				shipOut.SetActive (false); 
 				if (previousState == (int) camView.player)	// zoom out
 				{
 					if (cam.orthographicSize >= sizeToSeeShip)
@@ -144,7 +154,8 @@ public class CameraZoom : MonoBehaviour {
 				break;
 
 			// (3) switching to space view (zoom out)
-			case (int) camView.space:
+			case (int) camView.space: 
+				shipOut.SetActive (true); 
 				if (cam.orthographicSize >= sizeToSeeSpace)
 				{
 					cam.orthographicSize = sizeToSeeSpace; 

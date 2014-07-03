@@ -74,6 +74,10 @@ TagManager:
     userID: 6
     uniqueID: 333159601
     locked: 0
+  - name: ShipOuter
+    userID: 9
+    uniqueID: 2895100391
+    locked: 0
   - name: InFront
     userID: 7
     uniqueID: 2195163329
