@@ -180,7 +180,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b20456d7866efe4682425c8b59628c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
+  duration: 2
+  camSizeBridge: 1.5
+  camSizeOthers: 1.25
+  camSizeExit: 5
+  sizeInc: .25
+  posInc: 0
   roomCam: {fileID: 1289728603}
 --- !u!95 &129284872
 Animator:
@@ -1421,6 +1426,14 @@ Prefab:
       propertyPath: roomCam
       value: 
       objectReference: {fileID: 1289728603}
+    - target: {fileID: 11400002, guid: 60f15bf68c3bd8646afec23db92a3272, type: 2}
+      propertyPath: duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 60f15bf68c3bd8646afec23db92a3272, type: 2}
+      propertyPath: sizeInc
+      value: .25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60f15bf68c3bd8646afec23db92a3272, type: 2}
   m_RootGameObject: {fileID: 129284868}

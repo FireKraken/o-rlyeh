@@ -52,14 +52,7 @@ public class CameraZoom : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Q))
 		{
 			mainCam.transform.position = roomCam.transform.position; 
-			if (roomCam.orthographicSize >= 5.0f)
-			{
-				currentState = (int) camView.ship; 
-			}
-			else 
-			{
-				currentState = (int) camView.player; 
-			}
+			currentState = (int) camView.player; 
 		}
 
 		if (Input.GetKeyDown (KeyCode.E))
