@@ -14,17 +14,25 @@ public class PlayerTrigger : MonoBehaviour
 	public float camSizeBridge = 1.5f;
 	public float camSizeOthers = 1.25f; 
 	public float camSizeExit = 5.0f;
-	
-	private bool exitRoom;
-	private bool enterRoom; 
+
 	public Vector3 curPos; 
-	private float t; 
-	private enum rm { MessHall, EngineRoom, CrewQuarters, ObservationDeck, Bridge, OutsideRoom } ;
-	private int currentRoom; 
-	
-	public float sizeInc;
-	public float posInc; 
-	
+	private float t;
+
+	// Checks for whether a dialogue has been completed
+	private bool captDialogue0 = false;
+	private bool pugDialogue1 = false;
+	private bool captDialogue2 = false;
+	private bool pugDialogue3 = false;
+
+	// Prevent player movement when action is paused
+	private bool pauseAction = false;
+
+	// Initialize Dialoguer
+	void Awake ()
+	{
+		Dialoguer.Initialize ();
+	}
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -35,7 +43,17 @@ public class PlayerTrigger : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		
+		if (pauseAction) 
+		{
+			// Pause the action
+			rigidbody2D.isKinematic = true;
+		} 
+		else 
+		{
+			// Un-pause the action
+			rigidbody2D.isKinematic = false;
+			rigidbody2D.WakeUp();
+		}
 		
 	}
 	
@@ -76,6 +94,19 @@ public class PlayerTrigger : MonoBehaviour
 		}
 		curPos = mainCam.transform.position; 
 	}
+
+	void OnTriggerStay2D (Collider2D other)
+	{
+		if (other.tag == "CaptainObjective")
+		{
+			Debug.Log ("Entered Captain's conversation trigger.");
+
+			if (Input.GetKeyDown (KeyCode.Space))
+			{
+				pauseAction = true;
+			}
+		}
+	}
 	
 	void OnTriggerExit2D (Collider2D other)
 	{
@@ -89,89 +120,5 @@ public class PlayerTrigger : MonoBehaviour
 			Debug.Log ("Moving through the ship.");
 		}
 		curPos = mainCam.transform.position; 
-	}
-	
-	void enteringRoom(){
-		
-		switch (currentRoom) {
-		case (int) rm.MessHall:
-			if (mainCam.orthographicSize <= camSizeOthers)
-			{
-				mainCam.orthographicSize = camSizeOthers; 
-				enterRoom = false; 
-			}
-			else 
-			{
-				mainCam.orthographicSize -= sizeInc; 
-			}
-			mainCam.transform.position = Vector3.Slerp (curPos, new Vector3 (-0.575f, 0.175f, curPos.z), t);
-			break;
-		case (int) rm.EngineRoom:
-			if (mainCam.orthographicSize <= camSizeOthers)
-			{
-				mainCam.orthographicSize = camSizeOthers; 
-				enterRoom = false; 
-			}
-			else 
-			{
-				mainCam.orthographicSize -= sizeInc; 
-			}
-			mainCam.transform.position = Vector3.Slerp (curPos, new Vector3 (-0.465f, -2.175f, curPos.z), t);
-			break;
-		case (int) rm.CrewQuarters:
-			if (mainCam.orthographicSize <= camSizeOthers)
-			{
-				mainCam.orthographicSize = camSizeOthers; 
-				enterRoom = false; 
-			}
-			else 
-			{
-				mainCam.orthographicSize -= sizeInc; 
-			} 
-			mainCam.transform.position = Vector3.Slerp (curPos, new Vector3 (-5.0f, 0.175f, curPos.z), t);
-			break;
-		case (int) rm.ObservationDeck:
-			if (mainCam.orthographicSize <= camSizeOthers)
-			{
-				mainCam.orthographicSize = camSizeOthers; 
-				enterRoom = false; 
-			}
-			else 
-			{
-				mainCam.orthographicSize -= sizeInc; 
-			} 
-			mainCam.transform.position = Vector3.Slerp (curPos, new Vector3 (0.0f, 2.5f, curPos.z), t);
-			Debug.Log ("Entered observation deck.");
-			break;
-		case (int) rm.Bridge:
-			if (mainCam.orthographicSize <= camSizeBridge)
-			{
-				mainCam.orthographicSize = camSizeBridge; 
-				enterRoom = false; 
-			}
-			else 
-			{
-				mainCam.orthographicSize -= sizeInc; 
-			}
-			mainCam.transform.position = Vector3.Slerp (curPos, new Vector3 (4.275f, 0.1f, curPos.z), t);
-			Debug.Log ("Entered bridge.");
-			break; 
-		default:
-			break; 
-		}
-	}
-	
-	void exitingRoom(){
-		if (mainCam.orthographicSize >= camSizeExit)
-		{
-			mainCam.orthographicSize = camSizeExit; 
-			exitRoom = false; 
-		}
-		else 
-		{
-			mainCam.orthographicSize += sizeInc; 
-		}
-		//mainCam.orthographicSize = Mathf.Lerp (mainCam.orthographicSize, camSizeExit, t); 
-		mainCam.transform.position = Vector3.Slerp (curPos, new Vector3 (-0.575f, 0.175f, curPos.z), t);
 	}
 }

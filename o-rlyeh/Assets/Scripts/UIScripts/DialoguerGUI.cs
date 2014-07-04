@@ -12,6 +12,8 @@ public class DialoguerGUI : MonoBehaviour
 	// Used to store text from choice data
 	private string[] _choices;
 
+	public GUIStyle _custom;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -19,6 +21,8 @@ public class DialoguerGUI : MonoBehaviour
 		Dialoguer.events.onStarted += onStarted;
 		Dialoguer.events.onEnded += onEnded;
 		Dialoguer.events.onTextPhase += onTextPhase;
+
+		_custom.fontSize = Screen.width / 100;
 	}
 	
 	void OnGUI ()
@@ -34,11 +38,13 @@ public class DialoguerGUI : MonoBehaviour
 
 		GUILayout.BeginVertical ();
 
-		GUILayout.Box (_text);
+		GUILayout.Box (_text, _custom);
+
+		GUILayout.Space (Screen.height * 1 / 12);
 
 		if (_choices == null)
 		{
-			if (GUILayout.Button ("Next"))
+			if (GUILayout.Button ("Next", _custom))
 			{
 				Dialoguer.ContinueDialogue ();
 			}
@@ -47,7 +53,7 @@ public class DialoguerGUI : MonoBehaviour
 		{
 			for (int i = 0; i < _choices.Length; i++)
 			{
-				if (GUILayout.Button ((i + 1) + ".\t" + _choices[i]))
+				if (GUILayout.Button ((i + 1) + ".\t" + _choices[i], _custom))
 				{
 					Dialoguer.ContinueDialogue (i);
 				}

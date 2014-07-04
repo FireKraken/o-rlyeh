@@ -17,12 +17,12 @@ MonoBehaviour:
     - id: 0
       name: DayOne_Captain
       startPage: 0
-      scrollPosition: {x: 1548.76233, y: 0}
+      scrollPosition: {x: 914.099182, y: 0}
       phases:
       - id: 0
         type: 1
         theme: 
-        position: {x: 169, y: 55}
+        position: {x: 185, y: 22}
         outs: 010000000100000001000000
         advanced: 0
         metadata: 
@@ -56,7 +56,7 @@ MonoBehaviour:
       - id: 1
         type: 1
         theme: 
-        position: {x: 562, y: 71}
+        position: {x: 540, y: 30}
         outs: 020000000200000002000000
         advanced: 0
         metadata: 
@@ -90,7 +90,7 @@ MonoBehaviour:
       - id: 2
         type: 1
         theme: 
-        position: {x: 916, y: 66}
+        position: {x: 917, y: 33}
         outs: 030000000400000005000000
         advanced: 0
         metadata: 
@@ -127,13 +127,14 @@ MonoBehaviour:
       - id: 3
         type: 0
         theme: 
-        position: {x: 1252, y: 10}
+        position: {x: 1281, y: 10}
         outs: 06000000
         advanced: 0
         metadata: 
         text: "Uh, it's a little too late to abort, Officer. \n\nDid you double check
-          your calculations? Maybe you misread the data. I can't just turn us around
-          when we're hurtling through a wormhole at just under the speed of light."
+          your calculations? Maybe you misread the data. \n\nI can't just turn us
+          around when we're hurtling through a wormhole at just under the speed of
+          light."
         name: 
         portrait: 
         audio: 
@@ -160,7 +161,7 @@ MonoBehaviour:
       - id: 4
         type: 0
         theme: 
-        position: {x: 1253, y: 189}
+        position: {x: 1282, y: 149}
         outs: 06000000
         advanced: 0
         metadata: 
@@ -191,7 +192,7 @@ MonoBehaviour:
       - id: 5
         type: 0
         theme: 
-        position: {x: 1252, y: 348}
+        position: {x: 1283, y: 289}
         outs: 06000000
         advanced: 0
         metadata: 
@@ -222,13 +223,13 @@ MonoBehaviour:
       - id: 6
         type: 1
         theme: 
-        position: {x: 1625, y: 74}
+        position: {x: 1643, y: 61}
         outs: 070000000700000007000000
         advanced: 0
         metadata: 
         text: "Seeing as you're up, I actually have a small task you can help me with...
           \n\nI need you to head down to the Engine Room and switch power to the auxiliary
-          compression coils. Saves me the trouble of having to abandon the guidance
+          compression coils. \n\nSaves me the trouble of having to abandon the guidance
           computer in the middle of a trajectory re-calculation."
         name: 
         portrait: 
@@ -259,7 +260,7 @@ MonoBehaviour:
       - id: 7
         type: 0
         theme: 
-        position: {x: 1981.69971, y: 85}
+        position: {x: 2063.69971, y: 71}
         outs: 08000000
         advanced: 0
         metadata: 
@@ -296,7 +297,7 @@ MonoBehaviour:
       - id: 8
         type: 6
         theme: 
-        position: {x: 2312.69971, y: 104}
+        position: {x: 2463.69971, y: 66}
         outs: 
         advanced: 0
         metadata: 

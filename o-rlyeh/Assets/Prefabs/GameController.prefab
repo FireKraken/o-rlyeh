@@ -41,7 +41,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -99,12 +99,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
-  roomCam: {fileID: 0}
+  trigger: {fileID: 0}
   sizeToSeePlayer: 1.25
   sizeToSeeShip: 5
   sizeToSeeSpace: 10
   sizeInc: .25
   shipOut: {fileID: 0}
+  currentState: 0
   clips:
   - {fileID: 8300000, guid: 36d8545e5fef14247b2f86fc80cdf84e, type: 3}
   - {fileID: 8300000, guid: 73df72cd21c75da4caed018a128c5232, type: 3}
