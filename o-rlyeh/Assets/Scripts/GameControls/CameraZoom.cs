@@ -6,7 +6,8 @@ using System.Collections;
 public class CameraZoom : MonoBehaviour {
 
 	// GET THESE GAMEOBJECTS/COMPONENTS
-	public Camera cam; 
+	public Camera mainCam; 
+	public Camera roomCam; 
 
 	// CAMERA SIZES TO SWITCH TO WHEN ZOOM IN/OUT
 	public float sizeToSeePlayer;	// following the player 
@@ -21,10 +22,11 @@ public class CameraZoom : MonoBehaviour {
 	public enum camView { player, ship, space }; 
 	private int currentState; 	// will take one of the enum values/indeces
 	private int previousState; 
-	
+	private Vector3 mainCamPosition; 
+
 	void Start () 
 	{
-		
+		mainCamPosition = mainCam.transform.position; 
 	}
 
 	void Update () 
@@ -40,16 +42,6 @@ public class CameraZoom : MonoBehaviour {
 
 	/* --------------------------------------------------------------------------------------------------------------------------
 	 * NO ARGS. NO RETURN. 
-	 * in player view, camera follows the player around the ship
-	 * -------------------------------------------------------------------------------------------------------------------------- */
-
-	private void cameraFollow()
-	{
-
-	}	
-
-	/* --------------------------------------------------------------------------------------------------------------------------
-	 * NO ARGS. NO RETURN. 
 	 * (1) if press Q key, zoom in
 	 * (2) if press E key, zoom out
 	 * -------------------------------------------------------------------------------------------------------------------------- */
@@ -59,39 +51,37 @@ public class CameraZoom : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.Q))
 		{
-			if (currentState == (int) camView.player)
+			mainCam.transform.position = roomCam.transform.position; 
+			if (roomCam.orthographicSize >= 5.0f)
 			{
-				currentState = (int) camView.space; 
+				currentState = (int) camView.ship; 
 			}
 			else 
 			{
-				currentState--; 
+				currentState = (int) camView.player; 
 			}
 		}
+
 		if (Input.GetKeyDown (KeyCode.E))
 		{
 			if (currentState == (int) camView.space)
 			{
-				currentState = (int) camView.player; 
+				mainCam.transform.position = roomCam.transform.position; 
+				if (roomCam.orthographicSize >= 5.0f)
+				{
+					currentState = (int) camView.ship; 
+				}
+				else 
+				{
+					currentState = (int) camView.player; 
+				}
 			}
 			else 
 			{
+				mainCam.transform.position = mainCamPosition;
 				currentState++; 
 			}
 		}
-
-		/*
-		if (Input.GetKeyDown (KeyCode.Q))
-		{
-			if (currentState == (int) camView.ship) currentState = (int) camView.player; 
-			else currentState = (int) camView.ship;
-		}
-		if (Input.GetKeyDown (KeyCode.E))
-		{
-			if (currentState == (int) camView.ship) currentState = (int) camView.player; 
-			else currentState = (int) camView.ship;
-		}
-		*/
 	}
 
 	/* --------------------------------------------------------------------------------------------------------------------------
@@ -113,42 +103,46 @@ public class CameraZoom : MonoBehaviour {
 			// *** SWITCH TO GUI CAMERA IF ZOOMED IN I.E. ABOUT TO INTERACT WITH CAPTAIN/ROOM
 			case (int) camView.player:
 				shipOut.SetActive (false);
-				if (cam.orthographicSize <= sizeToSeePlayer)
+				if (mainCam.orthographicSize <= sizeToSeePlayer)
 				{
-					cam.orthographicSize = sizeToSeePlayer; 
+					mainCam.orthographicSize = sizeToSeePlayer; 
+					mainCam.enabled = false;
+					roomCam.enabled = true; 
 					previousState = (int) camView.player;
 				}
 				else 
 				{
-					cam.orthographicSize -= sizeInc; 
+					mainCam.orthographicSize -= sizeInc; 
 				} 
 				break;
 			
 			// (2) switching to ship view (must check if zooming out, if previously player view, or in, if previously space view)
 			case (int) camView.ship:
 				shipOut.SetActive (false); 
+				mainCam.enabled = true;
+				roomCam.enabled = false; 
 				if (previousState == (int) camView.player)	// zoom out
 				{
-					if (cam.orthographicSize >= sizeToSeeShip)
+					if (mainCam.orthographicSize >= sizeToSeeShip)
 					{
-						cam.orthographicSize = sizeToSeeShip; 
+						mainCam.orthographicSize = sizeToSeeShip; 
 						previousState = (int) camView.ship; 
 					}
 					else 
 					{
-						cam.orthographicSize += sizeInc; 
+						mainCam.orthographicSize += sizeInc; 
 					}
 				}
 				else if (previousState == (int) camView.space)	// zoom in
 				{
-					if (cam.orthographicSize <= sizeToSeeShip)
+					if (mainCam.orthographicSize <= sizeToSeeShip)
 					{
-						cam.orthographicSize = sizeToSeeShip; 
+						mainCam.orthographicSize = sizeToSeeShip; 
 						previousState = (int) camView.ship; 
 					}
 					else 
 					{
-						cam.orthographicSize -= sizeInc; 
+						mainCam.orthographicSize -= sizeInc; 
 					}
 				}
 				break;
@@ -156,14 +150,16 @@ public class CameraZoom : MonoBehaviour {
 			// (3) switching to space view (zoom out)
 			case (int) camView.space: 
 				shipOut.SetActive (true); 
-				if (cam.orthographicSize >= sizeToSeeSpace)
+				mainCam.enabled = true;
+				roomCam.enabled = false; 
+				if (mainCam.orthographicSize >= sizeToSeeSpace)
 				{
-					cam.orthographicSize = sizeToSeeSpace; 
+					mainCam.orthographicSize = sizeToSeeSpace; 
 					previousState = (int) camView.space; 
 				}
 				else 
 				{
-					cam.orthographicSize += sizeInc; 
+					mainCam.orthographicSize += sizeInc; 
 				}
 				break;
 
