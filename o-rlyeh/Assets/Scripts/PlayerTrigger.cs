@@ -43,6 +43,7 @@ public class PlayerTrigger : MonoBehaviour
 		{
 			// Pause the action
 			rigidbody2D.isKinematic = true;
+			mainCam.orthographicSize = 5.0f;
 		} 
 		else 
 		{
@@ -104,13 +105,13 @@ public class PlayerTrigger : MonoBehaviour
 		if (other.tag == "CaptainObjective")
 		{
 			Debug.Log ("Entered Captain's conversation trigger.");
-			sf.dialogueStarting = true; 
 			promptVisible = true;
 
 			if (Input.GetKeyDown (KeyCode.T))
 			{
 				pauseAction = true;
 				promptVisible = false;
+				sf.dialogueStarting = true;
 			}
 		}
 	}
