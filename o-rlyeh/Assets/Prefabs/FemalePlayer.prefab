@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5000000}
-  speed: 2
+  speed: 1
   anim: {fileID: 9500000}
   idleBox: {fileID: 6100008}
   upBox: {fileID: 6100006}
@@ -151,8 +151,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b20456d7866efe4682425c8b59628c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
-  mainCam: {fileID: 0}
+  duration: 2
+  camSizeBridge: 1.5
+  camSizeOthers: 1.25
+  camSizeExit: 5
+  sizeInc: .25
+  posInc: 0
+  roomCam: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -171,7 +176,7 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1915993373
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 98026db9ed576e2449880780422a8caf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
