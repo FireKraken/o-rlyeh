@@ -120,7 +120,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 180d540b13796dc459d1444940041d47, type: 2}
       propertyPath: roomCam
       value: 
-      objectReference: {fileID: 1289728603}
+      objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 180d540b13796dc459d1444940041d47, type: 2}
       propertyPath: shipOut
       value: 
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 2
-  mainCam: {fileID: 0}
+  mainCam: {fileID: 2012500997}
 --- !u!95 &129284872
 Animator:
   serializedVersion: 3
@@ -566,7 +566,11 @@ Prefab:
     - target: {fileID: 11400002, guid: 60f15bf68c3bd8646afec23db92a3272, type: 2}
       propertyPath: roomCam
       value: 
-      objectReference: {fileID: 1289728603}
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 60f15bf68c3bd8646afec23db92a3272, type: 2}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 2012500997}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60f15bf68c3bd8646afec23db92a3272, type: 2}
   m_RootGameObject: {fileID: 129284868}
@@ -1173,7 +1177,7 @@ Transform:
   - {fileID: 1566402916}
   - {fileID: 396500407}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &779942905
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,90 +2022,6 @@ Prefab:
   m_RootGameObject: {fileID: 1499117391}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1 &1289728599
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1289728604}
-  - 20: {fileID: 1289728603}
-  - 124: {fileID: 1289728602}
-  - 92: {fileID: 1289728601}
-  - 81: {fileID: 1289728600}
-  m_Layer: 0
-  m_Name: Room Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &1289728600
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1289728599}
-  m_Enabled: 0
---- !u!92 &1289728601
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1289728599}
-  m_Enabled: 1
---- !u!124 &1289728602
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1289728599}
-  m_Enabled: 1
---- !u!20 &1289728603
-Camera:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1289728599}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: .176470593, g: .176470593, b: .176470593, a: .0196078438}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: .300000012
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 1.25
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_HDR: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: .0219999999
---- !u!4 &1289728604
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1289728599}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.574999988, y: .174999997, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
 --- !u!1001 &1409455325
 Prefab:
   m_ObjectHideFlags: 0
@@ -2648,7 +2568,7 @@ Transform:
   - {fileID: 1981021531}
   - {fileID: 386468365}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1781117255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,7 +2649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 2012500997}
-  roomCam: {fileID: 1289728603}
+  roomCam: {fileID: 0}
   sizeToSeePlayer: 1.25
   sizeToSeeShip: 5
   sizeToSeeSpace: 10
@@ -2936,7 +2856,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2012500993}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: .176470593, g: .176470593, b: .176470593, a: .0196078438}
