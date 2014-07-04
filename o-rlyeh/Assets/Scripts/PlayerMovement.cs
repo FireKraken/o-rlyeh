@@ -4,7 +4,10 @@ using System.Collections;
 // ZERO GRAVITY IN THE SHIP - FLOAT AROUND USING WASD
 	
 public class PlayerMovement : MonoBehaviour {
-	
+
+	// CHECK CAMERA
+	public CameraZoom camZoom; 
+
 	// movement stuff
 	public Rigidbody2D rb; 
 	//public float turnSpeed = 0.1f;	// if want some rotation?
@@ -48,55 +51,57 @@ public class PlayerMovement : MonoBehaviour {
 	private void playerMove()
 	{
 
-		if (Input.GetKey (KeyCode.W)) 
-		{
-			rb.AddRelativeForce (Vector3.up * speed);
-			if (Input.GetKey (KeyCode.A))
+		if (camZoom.currentState != 2){
+			if (Input.GetKey (KeyCode.W)) 
 			{
+				rb.AddRelativeForce (Vector3.up * speed);
+				if (Input.GetKey (KeyCode.A))
+				{
+					currentDirection = (int)direction.left;
+				}
+				else if (Input.GetKey (KeyCode.D))
+				{
+					currentDirection = (int)direction.right;
+				}
+				else 
+				{
+					currentDirection = (int)direction.up;
+				}
+			}
+
+			if (Input.GetKey (KeyCode.A)) 
+			{
+				rb.AddRelativeForce (Vector3.left * speed); 
 				currentDirection = (int)direction.left;
 			}
-			else if (Input.GetKey (KeyCode.D))
+
+			if (Input.GetKey (KeyCode.S)) 
 			{
+				rb.AddRelativeForce (Vector3.down * speed); 
+				if (Input.GetKey (KeyCode.A))
+				{
+					currentDirection = (int)direction.left;
+				}
+				else if (Input.GetKey (KeyCode.D))
+				{
+					currentDirection = (int)direction.right;
+				}
+				else 
+				{
+					currentDirection = (int)direction.down;
+				}
+			}
+
+			if (Input.GetKey (KeyCode.D)) 
+			{
+				rb.AddRelativeForce (Vector3.right * speed); 
 				currentDirection = (int)direction.right;
 			}
-			else 
-			{
-				currentDirection = (int)direction.up;
-			}
-		}
 
-		if (Input.GetKey (KeyCode.A)) 
-		{
-			rb.AddRelativeForce (Vector3.left * speed); 
-			currentDirection = (int)direction.left;
-		}
-
-		if (Input.GetKey (KeyCode.S)) 
-		{
-			rb.AddRelativeForce (Vector3.down * speed); 
-			if (Input.GetKey (KeyCode.A))
+			if (!Input.anyKey)
 			{
-				currentDirection = (int)direction.left;
+				currentDirection = (int) direction.idle;
 			}
-			else if (Input.GetKey (KeyCode.D))
-			{
-				currentDirection = (int)direction.right;
-			}
-			else 
-			{
-				currentDirection = (int)direction.down;
-			}
-		}
-
-		if (Input.GetKey (KeyCode.D)) 
-		{
-			rb.AddRelativeForce (Vector3.right * speed); 
-			currentDirection = (int)direction.right;
-		}
-
-		if (!Input.anyKey)
-		{
-			currentDirection = (int) direction.idle;
 		}
 	}
 	

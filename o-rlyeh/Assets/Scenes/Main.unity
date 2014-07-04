@@ -180,8 +180,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b20456d7866efe4682425c8b59628c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
   mainCam: {fileID: 2012500997}
+  duration: 2
+  camSizeBridge: 1.5
+  camSizeOthers: 1.25
+  camSizeExit: 5
+  curPos: {x: 0, y: 0, z: 0}
+  sizeInc: .25
+  posInc: 0
 --- !u!95 &129284872
 Animator:
   serializedVersion: 3
@@ -209,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67dd6b375bc71b458227e609c5c9a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camZoom: {fileID: 1902304546}
   rb: {fileID: 129284869}
   speed: .5
   anim: {fileID: 129284872}
@@ -515,6 +522,14 @@ Prefab:
       propertyPath: mainCam
       value: 
       objectReference: {fileID: 2012500997}
+    - target: {fileID: 11400002, guid: 60f15bf68c3bd8646afec23db92a3272, type: 2}
+      propertyPath: camZoom
+      value: 
+      objectReference: {fileID: 1902304546}
+    - target: {fileID: 11400000, guid: 60f15bf68c3bd8646afec23db92a3272, type: 2}
+      propertyPath: camZoom
+      value: 
+      objectReference: {fileID: 1902304546}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60f15bf68c3bd8646afec23db92a3272, type: 2}
   m_RootGameObject: {fileID: 129284868}
@@ -2760,6 +2775,10 @@ Prefab:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 180d540b13796dc459d1444940041d47, type: 2}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 129284870}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 180d540b13796dc459d1444940041d47, type: 2}
   m_RootGameObject: {fileID: 1902304545}
@@ -2795,12 +2814,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 2012500997}
-  roomCam: {fileID: 0}
+  trigger: {fileID: 129284870}
   sizeToSeePlayer: 1.25
   sizeToSeeShip: 5
   sizeToSeeSpace: 10
   sizeInc: .25
   shipOut: {fileID: 1781117255}
+  currentState: 0
   clips:
   - {fileID: 8300000, guid: 36d8545e5fef14247b2f86fc80cdf84e, type: 3}
   - {fileID: 8300000, guid: 73df72cd21c75da4caed018a128c5232, type: 3}
