@@ -26,6 +26,14 @@ public class DialoguerGUI : MonoBehaviour
 		if (!_showing)
 			return;
 
+		GUILayout.BeginArea (new Rect (Screen.width * 0.05f, Screen.height * 0.05f, Screen.width * 0.85f, Screen.height * 0.85f));
+
+		GUILayout.Space (Screen.height * 3 / 5);
+
+		GUILayout.BeginHorizontal ();
+
+		GUILayout.BeginVertical ();
+
 		GUILayout.Box (_text);
 
 		if (_choices == null)
@@ -45,6 +53,14 @@ public class DialoguerGUI : MonoBehaviour
 				}
 			}
 		}
+
+		GUILayout.EndVertical ();
+
+		GUILayout.FlexibleSpace ();
+
+		GUILayout.EndHorizontal ();
+
+		GUILayout.EndArea ();
 	}
 
 	// Called when dialogue starts
