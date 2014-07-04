@@ -167,8 +167,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 348537113}
   - 212: {fileID: 348537112}
+  - 114: {fileID: 348537114}
+  - 114: {fileID: 348537115}
   m_Layer: 0
-  m_Name: intro sequence 1
+  m_Name: Intro1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,6 +210,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &348537114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 348537111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfd6159a1ee6ec44689f966a4b49a257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScreen: {fileID: 581762728}
+  lastScreen: 0
+  nextScene: 
+  switched: 0
+--- !u!114 &348537115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 348537111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5397acc90440207429855e32756ab327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeSpeed: 1.5
+  dialogueEnding: 0
+  dialogueStarting: 0
+  col: {r: 0, g: 0, b: 0, a: 0}
+  renderer: {fileID: 0}
 --- !u!1 &581762728
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,13 +250,15 @@ GameObject:
   m_Component:
   - 4: {fileID: 581762730}
   - 212: {fileID: 581762729}
+  - 114: {fileID: 581762731}
+  - 114: {fileID: 581762732}
   m_Layer: 0
-  m_Name: intro sequence 2
+  m_Name: Intro2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &581762729
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -258,3 +293,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &581762731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 581762728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfd6159a1ee6ec44689f966a4b49a257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScreen: {fileID: 0}
+  lastScreen: 1
+  nextScene: Main
+  switched: 0
+--- !u!114 &581762732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 581762728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5397acc90440207429855e32756ab327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeSpeed: 1.5
+  dialogueEnding: 0
+  dialogueStarting: 0
+  col: {r: 0, g: 0, b: 0, a: 0}
+  renderer: {fileID: 0}
