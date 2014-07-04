@@ -24,12 +24,12 @@ public class InitializeDialogue : MonoBehaviour
 	{
 		if (GameObject.Find("FemalePlayer").GetComponent<PlayerTrigger> ().pauseAction)
 		{
-			Dialoguer.StartDialogue (0, dialoguerCallback);
+			Dialoguer.StartDialogue (0);//, dialoguerCallback);
 		}
 	}
 
 	private void dialoguerCallback ()
 	{
-		this.enabled = true;
+
 	}
 }
