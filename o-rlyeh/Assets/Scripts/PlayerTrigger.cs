@@ -5,6 +5,7 @@ public class PlayerTrigger : MonoBehaviour
 {
 	// CAMERA
 	public Camera mainCam;
+	public SpriteFade sf; 
 	
 	// TIME STUFF
 	private float startTime;
@@ -103,7 +104,7 @@ public class PlayerTrigger : MonoBehaviour
 		if (other.tag == "CaptainObjective")
 		{
 			Debug.Log ("Entered Captain's conversation trigger.");
-			
+			sf.dialogueStarting = true; 
 			promptVisible = true;
 
 			if (Input.GetKeyDown (KeyCode.T))
