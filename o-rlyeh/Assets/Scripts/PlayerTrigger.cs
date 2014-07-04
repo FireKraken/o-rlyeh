@@ -25,18 +25,13 @@ public class PlayerTrigger : MonoBehaviour
 	private bool pugDialogue3 = false;
 
 	// Prevent player movement when action is paused
-	private bool pauseAction = false;
-
-	// Initialize Dialoguer
-	void Awake ()
-	{
-		Dialoguer.Initialize ();
-	}
+	public bool pauseAction = false;
+	private bool promptVisible = false;
+	public GameObject buttonPrompt;
 
 	// Use this for initialization
 	void Start () 
-	{
-		
+	{		
 		startTime = Time.time;
 	}
 	
@@ -54,7 +49,15 @@ public class PlayerTrigger : MonoBehaviour
 			rigidbody2D.isKinematic = false;
 			rigidbody2D.WakeUp();
 		}
-		
+
+		if (promptVisible)
+		{
+			buttonPrompt.renderer.enabled = true;
+		}
+		else
+		{
+			buttonPrompt.renderer.enabled = false;
+		}
 	}
 	
 	void OnTriggerEnter2D (Collider2D other)
@@ -100,10 +103,13 @@ public class PlayerTrigger : MonoBehaviour
 		if (other.tag == "CaptainObjective")
 		{
 			Debug.Log ("Entered Captain's conversation trigger.");
+			
+			promptVisible = true;
 
-			if (Input.GetKeyDown (KeyCode.Space))
+			if (Input.GetKeyDown (KeyCode.T))
 			{
 				pauseAction = true;
+				promptVisible = false;
 			}
 		}
 	}
@@ -120,5 +126,10 @@ public class PlayerTrigger : MonoBehaviour
 			Debug.Log ("Moving through the ship.");
 		}
 		curPos = mainCam.transform.position; 
+
+		if (other.tag == "CaptainObjective")
+		{
+			promptVisible = false;
+		}
 	}
 }
