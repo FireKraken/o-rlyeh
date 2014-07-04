@@ -3,4 +3,6 @@
 public enum DialoguerDialogues{
 	DayOne_Captain = 0,
 	DayOne_Pug = 1,
+	DayTwo_Captain = 2,
+	DayTwo_Pug = 3,
 }
