@@ -24,9 +24,14 @@ public class CameraZoom : MonoBehaviour {
 	private int previousState; 
 	private Vector3 mainCamPosition; 
 
+	// SOUND STUFF
+	public AudioClip[] clips; 
+
 	void Start () 
 	{
 		mainCamPosition = mainCam.transform.position; 
+		audio.clip = clips [0];
+		audio.Play (); 
 	}
 
 	void Update () 
@@ -95,6 +100,11 @@ public class CameraZoom : MonoBehaviour {
 			// (1) switching to player view (zoom in) 
 			// *** SWITCH TO GUI CAMERA IF ZOOMED IN I.E. ABOUT TO INTERACT WITH CAPTAIN/ROOM
 			case (int) camView.player:
+				if (previousState == (int) camView.space)
+				{
+					audio.clip = clips [0];
+					audio.Play (); 
+				}
 				shipOut.SetActive (false);
 				if (mainCam.orthographicSize <= sizeToSeePlayer)
 				{
@@ -111,6 +121,11 @@ public class CameraZoom : MonoBehaviour {
 			
 			// (2) switching to ship view (must check if zooming out, if previously player view, or in, if previously space view)
 			case (int) camView.ship:
+				if (previousState == (int) camView.space)
+				{
+					audio.clip = clips [0];
+					audio.Play (); 
+				}
 				shipOut.SetActive (false); 
 				mainCam.enabled = true;
 				roomCam.enabled = false; 
@@ -142,6 +157,11 @@ public class CameraZoom : MonoBehaviour {
 
 			// (3) switching to space view (zoom out)
 			case (int) camView.space: 
+				if (previousState != (int) camView.space)
+				{
+					audio.clip = clips [1];
+					audio.Play (); 
+				}
 				shipOut.SetActive (true); 
 				mainCam.enabled = true;
 				roomCam.enabled = false; 
