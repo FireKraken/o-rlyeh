@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5000000}
-  speed: 1
+  speed: .5
   anim: {fileID: 9500000}
   idleBox: {fileID: 6100008}
   upBox: {fileID: 6100006}
