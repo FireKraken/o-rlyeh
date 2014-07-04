@@ -22,7 +22,7 @@ public class DialoguerGUI : MonoBehaviour
 		Dialoguer.events.onEnded += onEnded;
 		Dialoguer.events.onTextPhase += onTextPhase;
 
-		_custom.fontSize = Screen.width / 100;
+		_custom.fontSize = Screen.width / 90;
 	}
 	
 	void OnGUI ()
@@ -44,7 +44,7 @@ public class DialoguerGUI : MonoBehaviour
 
 		if (_choices == null)
 		{
-			if (GUILayout.Button ("Next", _custom))
+			if (GUILayout.Button (">>", _custom))
 			{
 				Dialoguer.ContinueDialogue ();
 			}
