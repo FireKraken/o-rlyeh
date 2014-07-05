@@ -22,14 +22,15 @@ public class InitializeDialogue : MonoBehaviour
 
 	void OnGUI ()
 	{
-		if (GameObject.Find("FemalePlayer").GetComponent<PlayerTrigger> ().pauseAction)
+		if (GUILayout.Button ("Begin") || GameObject.Find ("FemalePlayer").GetComponent<PlayerTrigger> ().pauseAction)
 		{
-			Dialoguer.StartDialogue (0);//, dialoguerCallback);
+			Dialoguer.StartDialogue (0, dialoguerCallback);
+			this.enabled = false;
 		}
 	}
 
 	private void dialoguerCallback ()
 	{
-
+		this.enabled = true;
 	}
 }
