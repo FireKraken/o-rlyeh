@@ -32,8 +32,6 @@ public class InitializeDialogue : MonoBehaviour
 	private void dayOneCptCallback ()
 	{
 		GameObject.Find ("FemalePlayer").GetComponent<PlayerTrigger> ().sf.dialogueEnding = true;
-		GameObject.Find ("FemalePlayer").GetComponent<PlayerTrigger> ().captDialogue1 = false;
 		GameObject.Find ("FemalePlayer").GetComponent<PlayerTrigger> ().pauseAction = false;
-		GameObject.Find ("FemalePlayer").GetComponent<PlayerTrigger> ().promptVisible = false;
 	}
 }

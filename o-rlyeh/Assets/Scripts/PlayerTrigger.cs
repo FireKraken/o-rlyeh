@@ -111,6 +111,7 @@ public class PlayerTrigger : MonoBehaviour
 			{
 				pauseAction = true;
 				promptVisible = false;
+				captDialogue1 = false;
 				sf.dialogueStarting = true;
 			}
 		}
