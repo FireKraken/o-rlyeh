@@ -9,13 +9,13 @@ public class SpriteFade : MonoBehaviour {
 	public bool dialogueStarting  = false ; 
 	public Color col; 
 
-	public SpriteRenderer renderer;  
+	public SpriteRenderer _renderer;  
 
 	void Start () {
-		renderer = GetComponent<SpriteRenderer> (); 
-		col = renderer.color; 
+		_renderer = GetComponent<SpriteRenderer> (); 
+		col = _renderer.color; 
 
-		renderer.enabled = false; 
+		_renderer.enabled = false; 
 
 		dialogueEnding = true;
 		dialogueStarting = false; 
@@ -30,7 +30,7 @@ public class SpriteFade : MonoBehaviour {
 	{
 		if (dialogueStarting)
 		{
-			renderer.enabled = true;
+			_renderer.enabled = true;
 			FadeIn (); 
 		}
 	}
@@ -45,14 +45,14 @@ public class SpriteFade : MonoBehaviour {
 	void FadeToClear ()
 	{
 		// Lerp the colour of the texture between itself and transparent.
-		renderer.color = Color.Lerp(renderer.color, Color.clear, fadeSpeed * Time.deltaTime);
+		_renderer.color = Color.Lerp(_renderer.color, Color.clear, fadeSpeed * Time.deltaTime);
 	}
 	
 	
 	void FadeToSprite ()
 	{
 		// Lerp the colour of the texture between itself and black.
-		renderer.color = Color.Lerp(renderer.color, col, fadeSpeed * Time.deltaTime);
+		_renderer.color = Color.Lerp(_renderer.color, col, fadeSpeed * Time.deltaTime);
 	
 	}
 	
@@ -63,10 +63,10 @@ public class SpriteFade : MonoBehaviour {
 		FadeToClear();
 		
 		// If the texture is almost clear...
-		if(renderer.color.a <= 0.05f)
+		if(_renderer.color.a <= 0.05f)
 		{			
-			renderer.color = Color.clear; 
-			renderer.enabled = false; 
+			_renderer.color = Color.clear; 
+			_renderer.enabled = false; 
 			// The scene is no longer starting.  
 			dialogueEnding = false; 
 		}
@@ -79,9 +79,9 @@ public class SpriteFade : MonoBehaviour {
 		FadeToSprite();
 		
 		// If the screen is almost black...
-		if (renderer.color.a >= 0.95f)
+		if (_renderer.color.a >= 0.95f)
 		{
-			renderer.color = col; 
+			_renderer.color = col; 
 			dialogueStarting = false; 
 		}
 	}

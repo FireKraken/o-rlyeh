@@ -20,14 +20,14 @@ public class PlayerTrigger : MonoBehaviour
 	private float t;
 
 	// Checks for whether a dialogue has been completed
-	private bool captDialogue0 = false;
-	private bool pugDialogue1 = false;
-	private bool captDialogue2 = false;
-	private bool pugDialogue3 = false;
+	public bool captDialogue1 = true;
+	public bool pugDialogue1 = false;
+	public bool captDialogue2 = false;
+	public bool pugDialogue2 = false;
 
 	// Prevent player movement when action is paused
 	public bool pauseAction = false;
-	private bool promptVisible = false;
+	public bool promptVisible = false;
 	public GameObject buttonPrompt;
 
 	// Use this for initialization
@@ -43,7 +43,7 @@ public class PlayerTrigger : MonoBehaviour
 		{
 			// Pause the action
 			rigidbody2D.isKinematic = true;
-			mainCam.orthographicSize = 5.0f;
+			// mainCam.orthographicSize = 5.0f;
 		} 
 		else 
 		{
@@ -102,7 +102,7 @@ public class PlayerTrigger : MonoBehaviour
 
 	void OnTriggerStay2D (Collider2D other)
 	{
-		if (other.tag == "CaptainObjective")
+		if (other.tag == "CaptainObjective" && (captDialogue1 || captDialogue2))
 		{
 			Debug.Log ("Entered Captain's conversation trigger.");
 			promptVisible = true;
@@ -129,7 +129,7 @@ public class PlayerTrigger : MonoBehaviour
 		}
 		curPos = mainCam.transform.position; 
 
-		if (other.tag == "CaptainObjective")
+		if (other.tag == "CaptainObjective" && (captDialogue1 || captDialogue2))
 		{
 			promptVisible = false;
 		}
