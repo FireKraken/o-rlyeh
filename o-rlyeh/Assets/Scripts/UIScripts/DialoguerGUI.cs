@@ -32,7 +32,7 @@ public class DialoguerGUI : MonoBehaviour
 
 		GUILayout.BeginArea (new Rect (Screen.width * 0.05f, Screen.height * 0.05f, Screen.width * 0.85f, Screen.height * 0.85f));
 
-		GUILayout.Space (Screen.height * 3 / 5);
+		GUILayout.Space (Screen.height * 7 / 12);
 
 		GUILayout.BeginHorizontal ();
 
