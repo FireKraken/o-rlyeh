@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour {
 
 	// game objects to instantiate
 	public GameObject audioManager;
-	public GameObject mainMenu; 
 
 	// components in manager to enable/disable depending on game status
 	public CameraZoom camZoom;
@@ -25,11 +24,16 @@ public class GameManager : MonoBehaviour {
 		}
 
 		ins = this;
+		GetStatus (); 
 
-		/*if (AudioManager.ins == null)
+		if (AudioManager.ins == null)
 		{
-			(Instantiate(audioManager) as GameObject.SendMessage ("Initialize"));
-		}*/
+			(Instantiate(audioManager) as GameObject).SendMessage ("Initialize");
+			AudioManager.ins.camZoom = gameObject.GetComponent<CameraZoom>();
+			AudioManager.ins.SendMessage ("PlayClip");
+		}
+
+		camZoom = gameObject.GetComponent<CameraZoom>();
 	}
 
 	// Use this for initialization
@@ -39,6 +43,18 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		GetStatus ();
+	}
+
+	private void GetStatus(){
+		if (Application.loadedLevelName.Equals ("TitleScreen")){
+			status = GameState.GameStatus.Splash; 
+		}
+		else if (Application.loadedLevelName.Equals("Intro")){
+			status = GameState.GameStatus.Intro;
+		}
+		else if (Application.loadedLevelName.Equals ("Main")){
+			status = GameState.GameStatus.Game;
+		}
 	}
 }

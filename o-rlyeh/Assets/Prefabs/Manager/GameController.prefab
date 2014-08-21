@@ -9,8 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
-  m_Name: GameState
+  m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,9 +37,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddff470fefec6d74399d033c3edfd160, type: 3}
+  m_Script: {fileID: 11500000, guid: 265b83406434c204ebe84d74c36555f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
+  trigger: {fileID: 0}
+  sizeToSeePlayer: 1.25
+  sizeToSeeShip: 5
+  sizeToSeeSpace: 10
+  sizeInc: .25
+  smooth: 5
+  lerping: 0
+  lerpDelay: 1
+  shipOut: {fileID: 0}
+  currentState: 0
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8b9eb2d91ccbad4bbe13a0c4f305eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: 0
+  audioManager: {fileID: 100000, guid: 33bea72cd8257274887ec793f69b7fbc, type: 2}
+  camZoom: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

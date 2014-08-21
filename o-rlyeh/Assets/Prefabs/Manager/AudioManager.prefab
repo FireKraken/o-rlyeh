@@ -8,10 +8,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  - 114: {fileID: 11400000}
+  - 81: {fileID: 8100000}
   - 82: {fileID: 8200000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: GameController
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,6 +30,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!81 &8100000
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 1
@@ -95,18 +103,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 265b83406434c204ebe84d74c36555f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 85292ec1b527b384585b8bb84a2e4494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCam: {fileID: 0}
-  trigger: {fileID: 0}
-  sizeToSeePlayer: 1.25
-  sizeToSeeShip: 5
-  sizeToSeeSpace: 10
-  sizeInc: .25
-  shipOut: {fileID: 0}
-  currentState: 0
-  clips:
+  camZoom: {fileID: 0}
+  zoomClips:
   - {fileID: 8300000, guid: 36d8545e5fef14247b2f86fc80cdf84e, type: 3}
   - {fileID: 8300000, guid: 73df72cd21c75da4caed018a128c5232, type: 3}
 --- !u!1001 &100100000

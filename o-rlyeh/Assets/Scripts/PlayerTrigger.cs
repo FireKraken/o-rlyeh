@@ -7,10 +7,6 @@ public class PlayerTrigger : MonoBehaviour
 	public Camera mainCam;
 	public SpriteFade sf; 
 	
-	// TIME STUFF
-	private float startTime;
-	public float duration = 1.0f;
-	
 	// ZOOM IN/OUT STUFF
 	public float camSizeBridge = 1.5f;
 	public float camSizeOthers = 1.25f; 
@@ -38,7 +34,6 @@ public class PlayerTrigger : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{		
-		startTime = Time.time;
 		newPos = mainCam.transform.position;
 		newSize = mainCam.orthographicSize; 
 	}
