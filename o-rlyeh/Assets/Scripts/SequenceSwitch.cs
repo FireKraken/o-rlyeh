@@ -2,35 +2,58 @@
 using System.Collections;
 
 public class SequenceSwitch : MonoBehaviour {
-
-	private SequenceFade sf;
+	
+	private int id; 
 	public GameObject nextScreen; 
-	public bool lastScreen; 
 	public string nextScene; 
 	public bool switched; 
+
+	private static int current;
 	// Use this for initialization
 	void Start () {
-		sf = GetComponent<SequenceFade> (); 
-		sf.dialogueStarting = true; 
+		nextScene = "Main";
+		id = 0;
+		current = 1;
+		getID ();
+		if (id != 16){
+			nextScreen = GameObject.Find ("Intro" + (id+1));
+			nextScreen.GetComponent<SpriteRenderer>().enabled = false;
+		}
 		switched = false; 
+		if (current != id){
+			this.enabled = false;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.anyKeyDown) 
+		if (Input.GetMouseButtonDown(1))
 		{
-			if (lastScreen) 
+			Application.LoadLevel (nextScene); 
+		}
+		else if (Input.anyKeyDown) 
+		{
+			if (current == 16) 
 			{
 				Application.LoadLevel (nextScene); 
 			}
-			nextScreen.SetActive (true); 
-			sf.dialogueEnding = true;
-			switched = true; 
+			else {
+				nextScreen.GetComponent<SpriteRenderer>().enabled = true;
+				switched = true; 
+				current++;
+			}
 		}
 
 		if (switched) {
-			if (!sf.dialogueEnding){
-				gameObject.SetActive (false); 
+			nextScreen.GetComponent<SequenceSwitch>().enabled = true;
+			gameObject.SetActive (false); 
+		}
+	}
+
+	private void getID(){
+		for (int i = 0; id == 0; i++){
+			if (gameObject.name.Equals("Intro"+i)){
+				id = i;
 			}
 		}
 	}

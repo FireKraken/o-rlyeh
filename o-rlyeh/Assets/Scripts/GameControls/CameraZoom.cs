@@ -14,6 +14,11 @@ public class CameraZoom : MonoBehaviour {
 	public float sizeToSeeShip; 	// zoom out once
 	public float sizeToSeeSpace; 	// zoom out twice
 	public float sizeInc;
+	private float newSize;
+
+	public float smooth;
+	public bool lerping; 
+	public float lerpDelay;
 
 	// to switch ship views
 	public GameObject shipOut; 
@@ -29,12 +34,15 @@ public class CameraZoom : MonoBehaviour {
 
 	void Start () 
 	{
+		lerping = false;
 		mainCamPosition = mainCam.transform.position; 
 		audio.clip = clips [0];
 		audio.Play (); 
 
 		currentState = (int) camView.player;
 		previousState = (int) camView.player;
+
+		newSize = mainCam.orthographicSize;
 	}
 
 	void Update () 
@@ -48,8 +56,12 @@ public class CameraZoom : MonoBehaviour {
 		}
 	}	
 
+	void FixedUpdate(){
+		mainCam.orthographicSize = Mathf.Lerp (mainCam.orthographicSize, newSize, smooth*Time.deltaTime);
+	}
+
 	/* --------------------------------------------------------------------------------------------------------------------------
-	 * NO ARGS. NO RETURN. 
+	 * SWITCH CAMERA
 	 * (1) if press Q key, zoom in
 	 * (2) if press E key, zoom out
 	 * -------------------------------------------------------------------------------------------------------------------------- */
@@ -70,7 +82,7 @@ public class CameraZoom : MonoBehaviour {
 	}
 
 	/* --------------------------------------------------------------------------------------------------------------------------
-	 * ARG: current camera state to know how far to zoom in/out
+	 * CAM ZOOM. ARG: current camera state to know how far to zoom in/out
 	 * (1) switch to player view: must zoom in regardless of previous state
 	 * (2) switch to ship view: zoom OUT if previous is player view, IN if previous is space view
 	 * (3) switch to space view: must zoom out regardless of previous state
@@ -136,6 +148,12 @@ public class CameraZoom : MonoBehaviour {
 			default:
 				break; 
 			}
+			lerping = true; 
+			StartCoroutine (lerpCam());
 		}
+	}
+	IEnumerator lerpCam(){
+		yield return new WaitForSeconds (lerpDelay);
+		lerping = false; 
 	}
 }
