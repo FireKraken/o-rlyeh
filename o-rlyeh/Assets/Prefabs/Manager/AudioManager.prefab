@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camZoom: {fileID: 0}
+  titleClip: {fileID: 8300000, guid: ae8a0bd458392d2448d7f42aaccd2474, type: 3}
   zoomClips:
   - {fileID: 8300000, guid: 36d8545e5fef14247b2f86fc80cdf84e, type: 3}
   - {fileID: 8300000, guid: 73df72cd21c75da4caed018a128c5232, type: 3}

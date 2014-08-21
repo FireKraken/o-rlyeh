@@ -6,6 +6,9 @@ public class AudioManager : MonoBehaviour {
 	static public AudioManager ins;
 
 	public CameraZoom camZoom ;
+
+	// AUDIOCLIPS
+	public AudioClip titleClip; 
 	public AudioClip[] zoomClips; 
 
 	public void Initialize () {
@@ -15,14 +18,6 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public void PlayClip(){
-		if (GameManager.ins.status == GameState.GameStatus.Game){
-			if (camZoom.currentState == (int) CameraZoom.camView.space){
-				audio.clip = zoomClips[1];
-			}
-			else {
-				audio.clip = zoomClips[0]; 
-			}
-		}
 		audio.Play (); 
 	}
 
@@ -30,5 +25,26 @@ public class AudioManager : MonoBehaviour {
 		//if (GameManager.ins.status == (int) GameState.GameStatus.End){
 		//	Destroy (this.gameObject);
 		//}
+		GetClip ();
+	}
+
+	public void GetClip(){
+		if (GameManager.ins.status == GameState.GameStatus.Splash){
+			if (audio.clip != titleClip){
+				audio.clip = titleClip; 
+			}
+		}
+		else if (GameManager.ins.status == GameState.GameStatus.Game){
+			if (camZoom.currentState == (int) CameraZoom.camView.space){
+				if (audio.clip != zoomClips[1]){
+					audio.clip = zoomClips[1];
+				}
+			}
+			else {
+				if (audio.clip != zoomClips[0]){
+					audio.clip = zoomClips[0]; 
+				}
+			}
+		}
 	}
 }

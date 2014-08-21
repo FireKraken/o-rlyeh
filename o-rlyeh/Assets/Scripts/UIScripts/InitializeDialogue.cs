@@ -22,7 +22,7 @@ public class InitializeDialogue : MonoBehaviour
 
 	void OnGUI ()
 	{
-		if (GameObject.Find ("FemalePlayer").GetComponent<PlayerTrigger> ().pauseAction)
+		if (GameObject.Find ("Player").GetComponent<PlayerTrigger> ().pauseAction)
 		{
 			Dialoguer.StartDialogue (0, dayOneCptCallback);
 			this.enabled = false;

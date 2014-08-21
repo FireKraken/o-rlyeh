@@ -127,11 +127,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c67dd6b375bc71b458227e609c5c9a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camZoom: {fileID: 0}
   rb: {fileID: 5000000}
   speed: .5
   anim: {fileID: 9500000}
@@ -151,13 +152,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b20456d7866efe4682425c8b59628c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  mainCam: {fileID: 0}
+  sf: {fileID: 0}
   camSizeBridge: 1.5
   camSizeOthers: 1.25
   camSizeExit: 5
-  sizeInc: .25
-  posInc: 0
-  roomCam: {fileID: 0}
+  curPos: {x: 0, y: 0, z: 0}
+  newPos: {x: 0, y: 0, z: 0}
+  newSize: 0
+  smooth: 5
+  captDialogue1: 1
+  pugDialogue1: 0
+  captDialogue2: 0
+  pugDialogue2: 0
+  pauseAction: 0
+  promptVisible: 0
+  buttonPrompt: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

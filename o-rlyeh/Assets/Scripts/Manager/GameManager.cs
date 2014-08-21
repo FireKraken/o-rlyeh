@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
 		{
 			(Instantiate(audioManager) as GameObject).SendMessage ("Initialize");
 			AudioManager.ins.camZoom = gameObject.GetComponent<CameraZoom>();
+			AudioManager.ins.SendMessage ("GetClip");
 			AudioManager.ins.SendMessage ("PlayClip");
 		}
 
@@ -44,6 +45,14 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GetStatus ();
+
+		if (status == GameState.GameStatus.Game){
+			InitGame ();
+		}
+
+		if (status == GameState.GameStatus.End){
+			camZoom.enabled = true;
+		}
 	}
 
 	private void GetStatus(){
@@ -55,6 +64,23 @@ public class GameManager : MonoBehaviour {
 		}
 		else if (Application.loadedLevelName.Equals ("Main")){
 			status = GameState.GameStatus.Game;
+		}
+	}
+
+	public void InitGame(){
+		GameObject player = GameObject.Find ("Player");
+		PlayerMovement playerMvt = player.GetComponent<PlayerMovement>();
+
+		if (!playerMvt.enabled){
+			camZoom.mainCam = GameObject.Find ("Main Camera").camera; 
+			camZoom.trigger = player.GetComponent<PlayerTrigger>();
+			camZoom.enabled = true;
+
+			playerMvt.camZoom = gameObject.GetComponent<CameraZoom>();
+			playerMvt.enabled = true;
+
+			AudioManager.ins.SendMessage("GetClip");
+			AudioManager.ins.SendMessage("PlayClip");
 		}
 	}
 }
