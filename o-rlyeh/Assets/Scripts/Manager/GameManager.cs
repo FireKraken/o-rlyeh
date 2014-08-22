@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour {
 	// game objects to instantiate
 	public GameObject audioManager;
 
+	public GameObject pauseMenu; 
+	public GameObject pauseIns; 
+	public bool paused;
+
 	// components in manager to enable/disable depending on game status
 	public CameraZoom camZoom;
 
@@ -39,7 +43,13 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		if (GameObject.Find ("GameManager") != null)
+		{
+			Destroy (this.gameObject);
+		}
+		else {
+			this.gameObject.name = "GameManager";
+		}
 	}
 	
 	// Update is called once per frame
@@ -81,6 +91,40 @@ public class GameManager : MonoBehaviour {
 
 			AudioManager.ins.SendMessage("GetClip");
 			AudioManager.ins.SendMessage("PlayClip");
+		}
+
+		// pause menu
+		/*if (GameObject.Find ("PauseMenu") == null){
+			pauseIns = Instantiate (pauseMenu) as GameObject;
+			pauseIns.name = "PauseMenu"; 
+			pauseIns.SetActive(false);
+		}*/
+	}
+
+	public void PauseGame(){
+		if (Input.GetKeyDown (KeyCode.Escape)){
+			if (!paused){
+				if (pauseIns == null){
+					pauseIns = Instantiate (pauseMenu) as GameObject;
+					pauseIns.name = "PauseMenu"; 
+					pauseIns.SetActive(true);
+				}
+				InGame[] objs = FindObjectsOfType (typeof(InGame)) as InGame[];
+				foreach (var obj in objs) {
+					obj.paused = true;
+				}
+
+				paused = true;
+			}
+			else {
+				InGame[] objs = FindObjectsOfType(typeof(InGame)) as InGame[];
+				foreach (var obj in objs) {
+					obj.paused = false;
+				}
+				
+				paused = false;
+			}
+			pauseIns.SetActive(paused);
 		}
 	}
 }

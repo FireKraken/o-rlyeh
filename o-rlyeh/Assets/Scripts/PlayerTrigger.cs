@@ -65,7 +65,7 @@ public class PlayerTrigger : MonoBehaviour
 	}
 
 	void FixedUpdate(){
-		if (!GameObject.Find ("GameController").GetComponent<CameraZoom>().lerping){
+		if (!GameManager.ins.gameObject.GetComponent<CameraZoom>().lerping){
 			mainCam.orthographicSize = Mathf.Lerp (mainCam.orthographicSize, newSize, smooth * Time.deltaTime);
 			mainCam.transform.position = Vector3.Slerp (mainCam.transform.position, newPos, smooth * Time.deltaTime);
 		}
