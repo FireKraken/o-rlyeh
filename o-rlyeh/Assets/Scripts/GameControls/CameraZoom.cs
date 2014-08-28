@@ -44,11 +44,6 @@ public class CameraZoom : MonoBehaviour {
 	void Update () 
 	{
 		switchOrtho (); 
-
-		if (Input.GetKeyDown(KeyCode.R))
-		{
-			Application.LoadLevel ("TitleScreen");
-		}
 	}	
 
 	void FixedUpdate(){
