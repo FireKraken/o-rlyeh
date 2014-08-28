@@ -29,7 +29,17 @@ public class PlayerTrigger : MonoBehaviour
 	// Prevent player movement when action is paused
 	public bool pauseAction = false;
 	public bool promptVisible = false;
+	public Vector3[] buttonPos; 
+	private enum iconPos  { cpt, pug, generator }; 
+
+	// interaction button 
 	public GameObject buttonPrompt;
+	public Sprite[] buttons; 
+	private enum icon { e, i, t }; 
+
+	// generating pugs
+	public GameObject pug;
+	public Vector3 pugPos; 
 
 	// Use this for initialization
 	void Start () 
@@ -113,6 +123,8 @@ public class PlayerTrigger : MonoBehaviour
 		if (other.tag == "CaptainObjective" && (captDialogue1 || captDialogue2))
 		{
 			Debug.Log ("Entered Captain's conversation trigger.");
+			buttonPrompt.GetComponent<SpriteRenderer>().sprite = buttons[(int) icon.t]; 
+			buttonPrompt.transform.position = buttonPos [(int) iconPos.cpt];
 			promptVisible = true;
 
 			if (Input.GetKeyDown (KeyCode.T))
@@ -121,6 +133,20 @@ public class PlayerTrigger : MonoBehaviour
 				promptVisible = false;
 				captDialogue1 = false;
 				sf.dialogueStarting = true;
+			}
+		}
+		else if (other.tag == "PugGenerator")
+		{
+			Debug.Log ("Entered Pug Generator trigger.");
+			buttonPrompt.GetComponent<SpriteRenderer>().sprite = buttons[(int) icon.e]; 
+			buttonPrompt.transform.position = buttonPos [(int) iconPos.generator];
+			promptVisible = true;
+			
+			if (Input.GetKeyDown (KeyCode.E))
+			{
+				GameObject p = Instantiate (pug, pugPos, new Quaternion (0, 0, 0, 0)) as GameObject;
+				p.rigidbody2D.AddForce (0.7f*Vector2.up);
+
 			}
 		}
 	}
@@ -139,6 +165,9 @@ public class PlayerTrigger : MonoBehaviour
 
 		if (other.tag == "CaptainObjective" && (captDialogue1 || captDialogue2))
 		{
+			promptVisible = false;
+		}
+		if (other.tag == "PugGenerator"){
 			promptVisible = false;
 		}
 	}
