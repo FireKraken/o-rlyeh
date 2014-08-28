@@ -40,12 +40,16 @@ public class PlayerTrigger : MonoBehaviour
 	// generating pugs
 	public GameObject pug;
 	public Vector3 pugPos; 
+	public int pugCt; 
+	public float minPugForce;
+	public float maxPugForce;
 
 	// Use this for initialization
 	void Start () 
 	{		
 		newPos = mainCam.transform.position;
 		newSize = mainCam.orthographicSize; 
+		pugCt = 0; 
 	}
 	
 	// Update is called once per frame
@@ -137,16 +141,23 @@ public class PlayerTrigger : MonoBehaviour
 		}
 		else if (other.tag == "PugGenerator")
 		{
-			Debug.Log ("Entered Pug Generator trigger.");
-			buttonPrompt.GetComponent<SpriteRenderer>().sprite = buttons[(int) icon.e]; 
-			buttonPrompt.transform.position = buttonPos [(int) iconPos.generator];
-			promptVisible = true;
-			
-			if (Input.GetKeyDown (KeyCode.E))
-			{
-				GameObject p = Instantiate (pug, pugPos, new Quaternion (0, 0, 0, 0)) as GameObject;
-				p.rigidbody2D.AddForce (0.7f*Vector2.up);
-
+			if (pugCt < 50){
+				Debug.Log ("Entered Pug Generator trigger.");
+				buttonPrompt.GetComponent<SpriteRenderer>().sprite = buttons[(int) icon.e]; 
+				buttonPrompt.transform.position = buttonPos [(int) iconPos.generator];
+				promptVisible = true;
+				
+				if (Input.GetKeyDown (KeyCode.E))
+				{
+					pugCt++; 
+					GameObject p = Instantiate (pug, pugPos, new Quaternion (0, 0, 0, 0)) as GameObject;
+					Vector2[] dir = new Vector2[2] { Vector2.up, -Vector2.right };
+					p.rigidbody2D.AddForce (Random.Range (minPugForce, maxPugForce) * dir[Random.Range(0, dir.Length)]);
+					p.name = "Pug " + pugCt; 
+				}
+			}
+			else {
+				promptVisible = false;
 			}
 		}
 	}
